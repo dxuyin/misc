@@ -1,4 +1,5 @@
 github.com#?#li.repo-list-item.public.source:-abp-has(a:-abp-contains(cirosantilli))
+github.com#?#li.repo-list-item.public.source:-abp-has(a:-abp-contains(cirosantilli2))
 github.com#?#li.repo-list-item.public.source:-abp-has(a:-abp-contains(cheezcharmer))
 github.com#?#li.repo-list-item.public.source:-abp-has(a:-abp-contains(zaohmeing))
 github.com#?#li.repo-list-item.public.source:-abp-has(a:-abp-contains(zhaohmng-outlook-com))
