@@ -19,8 +19,8 @@
 #include "modes/psych_44.h"
 
 static const float preamp_44[13]={
-0.993, 0.993,
-0.997, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f
+1.f, 1.f,
+1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f
 };
 static const float preamp_48[13]={
 1.f, 1.f,
@@ -38,10 +38,10 @@ static const double quality_mapping_44[13]={
 };
 
 static const int blocksize_short_44[12]={
-  512,512,256,256,256,256,256,256,256,256,256,256
+  256,256,256,256,256,256,256,256,256,256,256,256
 };
 static const int blocksize_long_44[12]={
-  4096,4096,2048,2048,2048,2048,2048,2048,2048,2048,2048,2048
+  2048,2048,2048,2048,2048,2048,2048,2048,2048,2048,2048,2048
 };
 
 static const double _psy_compand_short_mapping[13]={
@@ -54,17 +54,17 @@ static const double _psy_compand_long_mapping[13]={
 static const double _global_mapping_44[13]={
   /* 1., 1., 1.5, 2., 2., 2.5, 2.7, 3.0, 3.5, 4., 4. */
 // 0., 1., 1., 1.5, 2., 2., 2.5, 2.7, 3.0, 3.7, 4., 4.
-  0., 1., 2., 2., 2.5, 3., 3., 3.5, 3.7, 4., 4., 5., 5. // low
+  2., 2., 2., 2., 2.5, 3., 3., 3.5, 3.7, 4., 4., 5., 5. // low
 //  0., 1., 2., 2., 2.5, 3., 3.2, 4.0, 4.0, 4.0, 4.5, 5., 5. // high
 };
 
 // short
 static const int _floor_mapping_44a[12]={
-  1,1,0,0,2,2,4,5,5,5,5,5
+  0,0,0,0,2,2,4,5,5,5,5,5
 };
 // long
 static const int _floor_mapping_44b[12]={
-  8,8,7,7,7,7,7,7,7,7,7,7
+  7,7,7,7,7,7,7,7,7,7,7,7
 };
 // LFE only
 static const int _floor_mapping_44c[12]={
