@@ -5,6 +5,7 @@
 .deps
 aclocal.m4
 configure
+configure~
 Makefile
 Makefile.in
 autom4te.cache

@@ -41,12 +41,12 @@ static const int *_floor_mapping_16[]={
 
 static const double rate_mapping_16[5]={
 //  12000.,20000.,44000.,86000.
-  10000.,12000.,20000.,44000.,86000.
+  18000.,16000.,24000.,48000.,96000.
 };
 
 static const double rate_mapping_16_uncoupled[5]={
 //  16000.,28000.,64000.,100000.
-  16000.,18000.,28000.,64000.,100000.
+  16000.,24000.,32000.,64000.,100000.
 };
 
 static const double _global_mapping_16[5]={ 2., 2., 3., 4., 5. };

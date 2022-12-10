@@ -19,8 +19,8 @@
 #include "modes/psych_44.h"
 
 static const float preamp_44[13]={
-1.f, 1.f,
-1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f
+0.993, 0.993,
+0.997, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f
 };
 static const float preamp_48[13]={
 1.f, 1.f,

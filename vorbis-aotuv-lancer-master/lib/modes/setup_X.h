@@ -27,7 +27,7 @@ static const ve_setup_data_template ve_setup_X_stereo={
   preamp_48,
   2,
   50000,
-  200000,
+  999999,
 
   blocksize_short_44,
   blocksize_long_44,
@@ -80,7 +80,7 @@ static const ve_setup_data_template ve_setup_X_uncoupled={
   preamp_48,
   -1,
   50000,
-  200000,
+  999999,
 
   blocksize_short_44,
   blocksize_long_44,

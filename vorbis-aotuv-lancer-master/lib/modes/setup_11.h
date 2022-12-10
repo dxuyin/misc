@@ -34,12 +34,12 @@ static const int *_floor_mapping_11[]={
 
 static const double rate_mapping_11[4]={
 //  8000.,13000.,44000.,
-  8000.,10000.,13000.,44000.,
+  8000.,12000.,16000.,48000.,
 };
 
 static const double rate_mapping_11_uncoupled[4]={
 //  12000.,20000.,50000.,
-  14000.,16000.,20000.,50000.,
+  8000.,16000.,24000.,56000.,
 };
 
 static const double quality_mapping_11[4]={
