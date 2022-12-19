@@ -51,7 +51,7 @@ static const double quality_mapping_8[4]={
 static const double _psy_compand_8_mapping[4]={ 0., 1., 2., 2.};
 
 //static const double _global_mapping_8[3]={ 1., 2., 3. };
-static const double _global_mapping_8[4]={ 2., 2., 3., 4. };
+static const double _global_mapping_8[4]={ 1., 2., 3., 4. };
 
 static const ve_setup_data_template ve_setup_8_stereo={
 //  2,

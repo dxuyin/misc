@@ -18,7 +18,7 @@
 #include "residue_16.h"
 
 static const float preamp_16[5]={
-0.848, 0.855, 0.905,  0.963, 0.998
+0.848, 0.855, 0.905, 0.963, 0.998
 };
 
 static const int blocksize_16_short[4]={
@@ -49,7 +49,7 @@ static const double rate_mapping_16_uncoupled[5]={
   16000.,24000.,32000.,64000.,100000.
 };
 
-static const double _global_mapping_16[5]={ 2., 2., 3., 4., 5. };
+static const double _global_mapping_16[5]={ 1., 2., 3., 4., 5. };
 
 static const double quality_mapping_16[5]={ -.2,-.1,.05,.5,1. };
 
