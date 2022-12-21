@@ -22,7 +22,7 @@ static const float preamp_16[5]={
 };
 
 static const int blocksize_16_short[4]={
-  1024,1024,512,512
+  512,512,512,512
 };
 static const int blocksize_16_long[4]={
   1024,1024,1024,1024
@@ -41,7 +41,7 @@ static const int *_floor_mapping_16[]={
 
 static const double rate_mapping_16[5]={
 //  12000.,20000.,44000.,86000.
-  18000.,16000.,24000.,48000.,96000.
+  12000.,16000.,24000.,48000.,96000.
 };
 
 static const double rate_mapping_16_uncoupled[5]={
