@@ -231,8 +231,8 @@ STIN float _mm_min_horz(__m128 x)
 
 #if	0
 /*---------------------------------------------------------------------------
-// for calcurate performance
-//-------------------------------------------------------------------------*/
+   for calcurate performance
+---------------------------------------------------------------------------*/
 extern unsigned __int64* _perf_start(void);
 extern void _perf_end(unsigned __int64 *stime, int index);
 extern void _perf_result(int index);

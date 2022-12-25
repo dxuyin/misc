@@ -364,7 +364,7 @@ static void vorbis_encode_compand_setup(vorbis_info *vi,double s,int block,
                                         int mappings){
   int i,is=s, ishcm;
   double ds=s-is, dshcm;
-  int hcm_stop=5; // high compander limit
+  int hcm_stop=5; /* high compander limit */
   
   codec_setup_info *ci=vi->codec_setup;
   vorbis_info_psy *p=ci->psy_param[block];
@@ -399,7 +399,7 @@ static void vorbis_encode_compand_setup(vorbis_info *vi,double s,int block,
       dshcm=ds;
     }
   }
-  if(dshcm==0 && ishcm>0){ // the same
+  if(dshcm==0 && ishcm>0){ /* the same */
     ishcm--;
     dshcm=1.;
   }

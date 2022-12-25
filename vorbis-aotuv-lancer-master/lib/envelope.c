@@ -32,8 +32,8 @@
 #endif														/* SSE Optimize */
 
 /* Origianl band */
-// band_begin[VE_BANDS]= {2, 4, 6, 9,13,17,22};
-// band_end[VE_BANDS]=   {4, 5, 6, 8, 8, 8, 8};
+/* band_begin[VE_BANDS]= {2, 4, 6, 9,13,17,22};
+   band_end[VE_BANDS]=   {4, 5, 6, 8, 8, 8, 8}; */
 
 /* Mod band */
 static const int band_begin[VE_BANDS]= {2, 4, 6, 9,13,17,22, 12, 8, 3, 2, 1};

@@ -33,7 +33,7 @@
 
 #define NEGINF -9999.f
 
-#define existe(x,y) (x<-y || x>=y) // !existe(x,0.5f) is faster than (rint(x)==0.f). (By the same result)
+#define existe(x,y) (x<-y || x>=y) /* !existe(x,0.5f) is faster than (rint(x)==0.f). (By the same result) */
 #define refer_phase(a,b) ((a>0. && b<0.) || (b>0. && a<0.))
 
 #define M3C 3
@@ -42,7 +42,7 @@ static const double stereo_threshholds[]=    {0.0, 0.5, 1.0, 1.5, 2.5, 4.5, 8.5,
 static const double stereo_threshholds_X[]=  {0.0, 0.5, 0.5, 0.5, 0.5, 1.5, 4.0, 6.0, 9e10};
 
 static const int m3n32[M3C] = {13,10,4};
-static const int m3n44[M3C] = {9,7,3}; // 1550.390625, 1205.859375, 516.796875
+static const int m3n44[M3C] = {9,7,3}; /* 1550.390625, 1205.859375, 516.796875 */
 static const int m3n48[M3C] = {8,6,3};
 static const int m3n32x2[M3C] = {26,20,8};
 static const int m3n44x2[M3C] = {18,14,6};
@@ -94,20 +94,20 @@ static const float ntfix_offset[]={
 
 static const aotuv_preset set_aotuv_psy[12]={
 /* tc_end tc_th min_lp tonefix */
-  {  124, .9f,   120,     104}, // 32 short(N=128)
-  {  248, .9f,   240,     208}, // 32 short(N=256)
-  {  992, .9f,   960,     832}, // 32 long(N=1024)
-  { 1984, .9f,  1920,    1664}, // 32 long(N=2048)
+  {  124, .9f,   120,     104}, /* 32 short(N=128) */
+  {  248, .9f,   240,     208}, /* 32 short(N=256) */
+  {  992, .9f,   960,     832}, /* 32 long(N=1024) */
+  { 1984, .9f,  1920,    1664}, /* 32 long(N=2048) */
 
-  {   83, .9f,    80,      70}, // 48 short(N=128)
-  {  166, .9f,   160,     140}, // 48 short(N=256)
-  {  664, .9f,   640,     560}, // 48 long(N=1024)
-  { 1328, .9f,  1280,    1120}, // 48 long(N=2048)
+  {   83, .9f,    80,      70}, /* 48 short(N=128) */
+  {  166, .9f,   160,     140}, /* 48 short(N=256) */
+  {  664, .9f,   640,     560}, /* 48 long(N=1024) */
+  { 1328, .9f,  1280,    1120}, /* 48 long(N=2048) */
 
-  {   90, .9f,    87,      76}, // 44.1 short(N=128)
-  {  180, .9f,   174,     152}, // 44.1 short(N=256)
-  {  720, .9f,   696,     608}, // 44.1 long(N=1024)  13953.515625
-  { 1440, .9f,  1392,    1216}  // 44.1 long(N=2048)
+  {   90, .9f,    87,      76}, /* 44.1 short(N=128) */
+  {  180, .9f,   174,     152}, /* 44.1 short(N=256) */
+  {  720, .9f,   696,     608}, /* 44.1 long(N=1024)  13953.515625 */
+  { 1440, .9f,  1392,    1216}  /* 44.1 long(N=2048) */
 };
 
 #ifdef __SSE__												/* SSE Optimize */
@@ -427,7 +427,7 @@ void _vp_psy_init(vorbis_look_psy *p,vorbis_info_psy *vi,
   }
   
   if(select<0){
-    p->tonecomp_endp=0; // dummy
+    p->tonecomp_endp=0; /* dummy */
     p->tonecomp_thres=.25;
     p->min_nn_lp=0;
     p->tonefix_end=0;
@@ -624,7 +624,7 @@ float _postnoise_detection(float *pcm, int nn, int mode, int lw_mode){
   float ret=-1.0;
   double upt=0, unt=0;
 
-  if(mode!=2)return ret; // only trans. block
+  if(mode!=2)return ret; /* only trans. block */
   if(lw_mode!=0)return ret;
   if(nn<2048)return ret;
 
@@ -1237,7 +1237,7 @@ static void bark_noise_hybridmp(const vorbis_look_psy *p,
 	_MM_ALIGN16 __m128	TEMP[16];
 	int	p0, p1;
 	
-	// Phase 1
+	/* Phase 1 */
 	_mm_prefetch((const char*)(f     ), _MM_HINT_NTA);
 	_mm_prefetch((const char*)(findex2     ), _MM_HINT_NTA);
 	_mm_prefetch((const char*)(f  +16), _MM_HINT_NTA);
@@ -1309,18 +1309,18 @@ static void bark_noise_hybridmp(const vorbis_look_psy *p,
 		XMM6	 = _mm_load_ps(findex2+ 8);
 		XMM7	 = _mm_load_ps(findex2+12);
 		XMM0	 = _mm_mul_ps(XMM0, XMM4);
-		XMM4	 = TEMP[0];	// X
+		XMM4	 = TEMP[0];	/* X */
 		XMM1	 = _mm_mul_ps(XMM1, XMM5);
-		XMM5	 = TEMP[1];	// Y
+		XMM5	 = TEMP[1];	/* Y */
 		XMM2	 = _mm_mul_ps(XMM2, XMM6);
-		XMM6	 = XMM0;	// XX
+		XMM6	 = XMM0;	/* XX */
 		XMM3	 = _mm_mul_ps(XMM3, XMM7);
-		XMM7	 = TEMP[3];	// XY
+		XMM7	 = TEMP[3];	/* XY */
 		XMM0	 = XMM4;
 		TEMP[ 6]	 = XMM1;
 		XMM1	 = XMM5;
-		// i=0-3
-		// PXXYY	 = (0, 0, 0, Y^2)
+		/* i=0-3 */
+		/* PXXYY	 = (0, 0, 0, Y^2) */
 		XMM4	 = _mm_shuffle_ps(XMM4, XMM6, _MM_SHUFFLE(1,0,1,0));
 		XMM0	 = _mm_shuffle_ps(XMM0, XMM6, _MM_SHUFFLE(3,2,3,2));
 		TEMP[10]	 = XMM2;
@@ -1331,12 +1331,12 @@ static void bark_noise_hybridmp(const vorbis_look_psy *p,
 		XMM7	 = XMM0;
 		XMM4	 = _mm_shuffle_ps(XMM4, XMM5, _MM_SHUFFLE(2,0,2,0));
 		XMM6	 = _mm_shuffle_ps(XMM6, XMM5, _MM_SHUFFLE(3,1,3,1));
-		XMM5	 = TEMP[ 4];	// X
+		XMM5	 = TEMP[ 4];	/* X */
 		XMM0	 = _mm_shuffle_ps(XMM0, XMM1, _MM_SHUFFLE(2,0,2,0));
 		XMM7	 = _mm_shuffle_ps(XMM7, XMM1, _MM_SHUFFLE(3,1,3,1));
-		XMM1	 = TEMP[ 5];	// Y
-		// XXYY[i+0]	 = (XY,  Y, XX,  X)	 = (0, Y^3, 0, 0)
-		// To Fix (0, Y^3*.5f, 0, Y^2*.5f)
+		XMM1	 = TEMP[ 5];	/* Y */
+		/* XXYY[i+0]	 = (XY,  Y, XX,  X)	 = (0, Y^3, 0, 0) */
+		/* To Fix (0, Y^3*.5f, 0, Y^2*.5f) */
 		XMM4	 = _mm_add_ps(XMM4, PXXYY);
 		TN[ 0]	*= 0.5;
 		XMM4	 = _mm_mul_ps(XMM4, PM128(PFV_0P5));
@@ -1347,9 +1347,9 @@ static void bark_noise_hybridmp(const vorbis_look_psy *p,
 		TN[ 3]	+= TN[ 2];
 		XMM7	 = _mm_add_ps(XMM7, XMM0);
 		TXXYY[ 0]	 = XMM4;
-		XMM4	 = TEMP[ 6];	// XX
+		XMM4	 = TEMP[ 6];	/* XX */
 		TXXYY[ 1]	 = XMM6;
-		XMM6	 = TEMP[ 7];	// XY
+		XMM6	 = TEMP[ 7];	/* XY */
 		TXXYY[ 2]	 = XMM0;
 		XMM0	 = XMM5;
 		TXXYY[ 3]	 = XMM7;
@@ -1362,10 +1362,10 @@ static void bark_noise_hybridmp(const vorbis_look_psy *p,
 		XMM6	 = XMM0;
 		XMM5	 = _mm_shuffle_ps(XMM5, XMM1, _MM_SHUFFLE(2,0,2,0));
 		XMM4	 = _mm_shuffle_ps(XMM4, XMM1, _MM_SHUFFLE(3,1,3,1));
-		XMM1	 = TEMP[ 8];	// X
+		XMM1	 = TEMP[ 8];	/* X */
 		XMM0	 = _mm_shuffle_ps(XMM0, XMM7, _MM_SHUFFLE(2,0,2,0));
 		XMM6	 = _mm_shuffle_ps(XMM6, XMM7, _MM_SHUFFLE(3,1,3,1));
-		XMM7	 = TEMP[ 9];	// Y
+		XMM7	 = TEMP[ 9];	/* Y */
 		XMM5	 = _mm_add_ps(XMM5, TXXYY[ 3]);
 		TN[ 4]	+= TN[ 3];
 		XMM4	 = _mm_add_ps(XMM4, XMM5);
@@ -1375,9 +1375,9 @@ static void bark_noise_hybridmp(const vorbis_look_psy *p,
 		XMM6	 = _mm_add_ps(XMM6, XMM0);
 		TN[ 7]	+= TN[ 6];
 		TXXYY[ 4]	 = XMM5;
-		XMM5	 = TEMP[10];	// XX
+		XMM5	 = TEMP[10];	/* XX */
 		TXXYY[ 5]	 = XMM4;
-		XMM4	 = TEMP[11];	// XY
+		XMM4	 = TEMP[11];	/* XY */
 		TXXYY[ 6]	 = XMM0;
 		XMM0	 = XMM1;
 		TXXYY[ 7]	 = XMM6;
@@ -1390,10 +1390,10 @@ static void bark_noise_hybridmp(const vorbis_look_psy *p,
 		XMM4	 = XMM0;
 		XMM1	 = _mm_shuffle_ps(XMM1, XMM7, _MM_SHUFFLE(2,0,2,0));
 		XMM5	 = _mm_shuffle_ps(XMM5, XMM7, _MM_SHUFFLE(3,1,3,1));
-		XMM7	 = TEMP[12];	// X
+		XMM7	 = TEMP[12];	/* X */
 		XMM0	 = _mm_shuffle_ps(XMM0, XMM6, _MM_SHUFFLE(2,0,2,0));
 		XMM4	 = _mm_shuffle_ps(XMM4, XMM6, _MM_SHUFFLE(3,1,3,1));
-		XMM6	 = TEMP[13];	// Y
+		XMM6	 = TEMP[13];	/* Y */
 		XMM1	 = _mm_add_ps(XMM1, TXXYY[ 7]);
 		TN[ 8]	+= TN[ 7];
 		XMM5	 = _mm_add_ps(XMM5, XMM1);
@@ -1403,9 +1403,9 @@ static void bark_noise_hybridmp(const vorbis_look_psy *p,
 		XMM4	 = _mm_add_ps(XMM4, XMM0);
 		TN[11]	+= TN[10];
 		TXXYY[ 8]	 = XMM1;
-		XMM1	 = TEMP[14];	// XX
+		XMM1	 = TEMP[14];	/* XX */
 		TXXYY[ 9]	 = XMM5;
-		XMM5	 = TEMP[15];	// XY
+		XMM5	 = TEMP[15];	/* XY */
 		TXXYY[10]	 = XMM0;
 		XMM0	 = XMM7;
 		TXXYY[11]	 = XMM4;
@@ -1504,14 +1504,14 @@ static void bark_noise_hybridmp(const vorbis_look_psy *p,
 		XMM6	 = _mm_load_ps(findex2+i+ 8);
 		XMM7	 = _mm_load_ps(findex2+i+12);
 		XMM0	 = _mm_mul_ps(XMM0, XMM4);
-		XMM4	 = TEMP[ 0];	// X
+		XMM4	 = TEMP[ 0];	/* X */
 		XMM1	 = _mm_mul_ps(XMM1, XMM5);
-		XMM5	 = TEMP[ 1];	// Y
+		XMM5	 = TEMP[ 1];	/* Y */
 		XMM2	 = _mm_mul_ps(XMM2, XMM6);
 		XMM6	 = XMM0;	/* XX */
 		XMM0	 = XMM4;
 		XMM3	 = _mm_mul_ps(XMM3, XMM7);
-		XMM7	 = TEMP[ 3];	// XY
+		XMM7	 = TEMP[ 3];	/* XY */
 		TEMP[ 6]	 = XMM1;
 		XMM1	 = XMM5;
 		XMM4	 = _mm_shuffle_ps(XMM4, XMM6, _MM_SHUFFLE(1,0,1,0));
@@ -1524,10 +1524,10 @@ static void bark_noise_hybridmp(const vorbis_look_psy *p,
 		XMM7	 = XMM0;
 		XMM4	 = _mm_shuffle_ps(XMM4, XMM5, _MM_SHUFFLE(2,0,2,0));
 		XMM6	 = _mm_shuffle_ps(XMM6, XMM5, _MM_SHUFFLE(3,1,3,1));
-		XMM5	 = TEMP[ 4];	// X
+		XMM5	 = TEMP[ 4];	/* X */
 		XMM0	 = _mm_shuffle_ps(XMM0, XMM1, _MM_SHUFFLE(2,0,2,0));
 		XMM7	 = _mm_shuffle_ps(XMM7, XMM1, _MM_SHUFFLE(3,1,3,1));
-		XMM1	 = TEMP[ 5];	// Y
+		XMM1	 = TEMP[ 5];	/* Y */
 		XMM4	 = _mm_add_ps(XMM4, TXXYY[-1]);
 		TN[ 0]	+= TN[-1];
 		XMM6	 = _mm_add_ps(XMM6, XMM4);
@@ -1537,9 +1537,9 @@ static void bark_noise_hybridmp(const vorbis_look_psy *p,
 		XMM7	 = _mm_add_ps(XMM7, XMM0);
 		TN[ 3]	+= TN[ 2];
 		TXXYY[ 0]	 = XMM4;
-		XMM4	 = TEMP[ 6];	// XX
+		XMM4	 = TEMP[ 6];	/* XX */
 		TXXYY[ 1]	 = XMM6;
-		XMM6	 = TEMP[ 7];	// XY
+		XMM6	 = TEMP[ 7];	/* XY */
 		TXXYY[ 2]	 = XMM0;
 		XMM0	 = XMM5;
 		TXXYY[ 3]	 = XMM7;
@@ -1552,10 +1552,10 @@ static void bark_noise_hybridmp(const vorbis_look_psy *p,
 		XMM6	 = XMM0;
 		XMM5	 = _mm_shuffle_ps(XMM5, XMM1, _MM_SHUFFLE(2,0,2,0));
 		XMM4	 = _mm_shuffle_ps(XMM4, XMM1, _MM_SHUFFLE(3,1,3,1));
-		XMM1	 = TEMP[ 8];	// X
+		XMM1	 = TEMP[ 8];	/* X */
 		XMM0	 = _mm_shuffle_ps(XMM0, XMM7, _MM_SHUFFLE(2,0,2,0));
 		XMM6	 = _mm_shuffle_ps(XMM6, XMM7, _MM_SHUFFLE(3,1,3,1));
-		XMM7	 = TEMP[ 9];	// Y
+		XMM7	 = TEMP[ 9];	/* Y */
 		XMM5	 = _mm_add_ps(XMM5, TXXYY[ 3]);
 		TN[ 4]	+= TN[ 3];
 		XMM4	 = _mm_add_ps(XMM4, XMM5);
@@ -1565,9 +1565,9 @@ static void bark_noise_hybridmp(const vorbis_look_psy *p,
 		XMM6	 = _mm_add_ps(XMM6, XMM0);
 		TN[ 7]	+= TN[ 6];
 		TXXYY[ 4]	 = XMM5;
-		XMM5	 = TEMP[10];	// XX
+		XMM5	 = TEMP[10];	/* XX */
 		TXXYY[ 5]	 = XMM4;
-		XMM4	 = TEMP[11];	// XY
+		XMM4	 = TEMP[11];	/* XY */
 		TXXYY[ 6]	 = XMM0;
 		XMM0	 = XMM1;
 		TXXYY[ 7]	 = XMM6;
@@ -1580,10 +1580,10 @@ static void bark_noise_hybridmp(const vorbis_look_psy *p,
 		XMM4	 = XMM0;
 		XMM1	 = _mm_shuffle_ps(XMM1, XMM7, _MM_SHUFFLE(2,0,2,0));
 		XMM5	 = _mm_shuffle_ps(XMM5, XMM7, _MM_SHUFFLE(3,1,3,1));
-		XMM7	 = TEMP[12];	// X
+		XMM7	 = TEMP[12];	/* X */
 		XMM0	 = _mm_shuffle_ps(XMM0, XMM6, _MM_SHUFFLE(2,0,2,0));
 		XMM4	 = _mm_shuffle_ps(XMM4, XMM6, _MM_SHUFFLE(3,1,3,1));
-		XMM6	 = TEMP[13];	// Y
+		XMM6	 = TEMP[13];	/* Y */
 		XMM1	 = _mm_add_ps(XMM1, TXXYY[ 7]);
 		TN[ 8]	+= TN[ 7];
 		XMM5	 = _mm_add_ps(XMM5, XMM1);
@@ -1593,9 +1593,9 @@ static void bark_noise_hybridmp(const vorbis_look_psy *p,
 		XMM4	 = _mm_add_ps(XMM4, XMM0);
 		TN[11]	+= TN[10];
 		TXXYY[ 8]	 = XMM1;
-		XMM1	 = TEMP[14];	// XX
+		XMM1	 = TEMP[14];	/* XX */
 		TXXYY[ 9]	 = XMM5;
-		XMM5	 = TEMP[15];	// XY
+		XMM5	 = TEMP[15];	/* XY */
 		TXXYY[10]	 = XMM0;
 		XMM0	 = XMM7;
 		TXXYY[11]	 = XMM4;
@@ -3661,7 +3661,7 @@ static void ntfix(const vorbis_look_psy *p,
   memset(inmod, 0, 256*sizeof(*inmod));
 
   if(block_mode<=1){
-    //// short (impulse, padding)
+    /* short (impulse, padding) */
     const int freq_upc=3;
     const int freq_unc=4;
     int nxplus=nx+freq_unc;
@@ -3678,13 +3678,13 @@ static void ntfix(const vorbis_look_psy *p,
       if(spectral[i]<-70)inmod[i]=-70+(spectral[i]+70)*.1;
       else inmod[i]=spectral[i];
     }
-    for(i=freq_unc; i<nx; i++){   // nx is alredy small than n
-      if((spectral[i]>spectral[i-1]) && (spectral[i]>spectral[i+1])){ // peak detection
+    for(i=freq_unc; i<nx; i++){   /* nx is alredy small than n */
+      if((spectral[i]>spectral[i-1]) && (spectral[i]>spectral[i+1])){ /* peak detection */
         int ps=i-1;
         int pe=i+1;
         int upper=i-freq_upc;
         int under=i+freq_unc;
-        // search a range
+        /* search a range */
         for(j=ps; j>upper; j--){
           if(spectral[j+1]<spectral[j])break;
           ps=j;
@@ -3701,10 +3701,10 @@ static void ntfix(const vorbis_look_psy *p,
               ss-=tolerance;
               ss*=strength;
             }
-            //else{
-            //  float ts=noise[i]-spectral[i];
-            //  if(ts<9)ss-=ts;
-            //}
+         	/* else{
+              float ts=noise[i]-spectral[i];
+              if(ts<9)ss-=ts;
+            } */
             for(j=ps; j<=pe; j++){
               temp[j]=max(ss, temp[j]);
               if(temp[j]<0)temp[j]=0;
@@ -3715,15 +3715,15 @@ static void ntfix(const vorbis_look_psy *p,
       }
     }
     for(i=freq_unc-1; i<nx; i++){
-      float test=min(p->ntfix_noiseoffset[i], p->noiseoffset[1][i]+limit); // limit
+      float test=min(p->ntfix_noiseoffset[i], p->noiseoffset[1][i]+limit); /* limit */
       if(temp[i]>test)temp[i]=test;
-      //if(temp[j]<0)temp[j]=0;
+      /* if(temp[j]<0)temp[j]=0; */
       noise[i]-=temp[i];
     }
 
   }else if(block_mode==2){
-    //// transition (start/stop)
-    // become average every eight coefficients.
+    /* transition (start/stop)
+    become average every eight coefficients. */
     for(i=0,k=0; i<nx; i+=8,k++){
       double na=0;
       for(j=0; j<8; j++)na+=noise[i+j];
@@ -3732,7 +3732,7 @@ static void ntfix(const vorbis_look_psy *p,
     }
     nx/=8;
     for(i=3; i<nx; i++){
-      if((temp[i]>temp[i-1]) && (temp[i]>temp[i+1])){ // peak detection
+      if((temp[i]>temp[i-1]) && (temp[i]>temp[i+1])){ /* peak detection */
         int a=0;
         int b=0;
         float thres=0;
@@ -3744,27 +3744,25 @@ static void ntfix(const vorbis_look_psy *p,
           thres=temp[i-1];
           a=i-2;
         }
-        //if(temp[i+1]>temp[i+2]){
-        //  b=i+2;
-        //}else{
-        //  b=i+2;
-        //}
+        /* if(temp[i+1]>temp[i+2]){
+          b=i+2;
+        }else{
+          b=i+2;
+        } */
         b=i+3;
         thres=temp[i]-thres;
         if(thres>2.){
           int eightimes=i*8;
-          float test=min(p->ntfix_noiseoffset[eightimes], p->noiseoffset[1][eightimes]+limit); // limit
+          float test=min(p->ntfix_noiseoffset[eightimes], p->noiseoffset[1][eightimes]+limit); /* limit */
           thres=min(thres-2, test);
           a*=8;
           b*=8;
-          //if(thres<0)thres=0;
+          /* if(thres<0)thres=0; */
           for(j=a; j<=b; j++)noise[j]-=thres;
         }
       }
     }
-  }/*else{
-    // long block
-  }*/
+  }
 }
 
 void _vp_noisemask(const vorbis_look_psy *p,
@@ -3966,8 +3964,8 @@ void _vp_noisemask(const vorbis_look_psy *p,
 				fwork2[i+2]	 = p->vi->noisecompand[*((int*)(fwork2+i+2))];
 				fwork2[i+3]	 = p->vi->noisecompand[*((int*)(fwork2+i+3))];
 			}
-			//epeak[i] = work[i]+stn_compand[dB];
-		    //logmask[i] = work[i]+p->vi->noisecompand[dB];
+			/* epeak[i] = work[i]+stn_compand[dB];
+		    logmask[i] = work[i]+p->vi->noisecompand[dB]; */
 			for(i=spm4;i<n;i+=16)
 			{
 				__m128	XMM0	 = _mm_load_ps(fwork2+i   );
@@ -4018,9 +4016,9 @@ void _vp_noisemask(const vorbis_look_psy *p,
   /* reduction of post-echo. (postprocessing of aoTuV M2) */
   if(poste>0){
     for(i=0,k=0; i<p->min_nn_lp; i+=partition,k++){
-      float temp=min(min(poste,30.f), p->noiseoffset[1][i]+30.f); // limit
+      float temp=min(min(poste,30.f), p->noiseoffset[1][i]+30.f); /* limit */
       if(temp<=0)continue;
-      npeak[k]=-1.f; // this time, don't use noise normalization
+      npeak[k]=-1.f; /* this time, don't use noise normalization */
       for(j=0; j<partition; j++) logmask[i+j]-=temp;
     }
   }
@@ -4033,9 +4031,9 @@ void _vp_noisemask(const vorbis_look_psy *p,
   */
   for(k=0, i=0; i<p->min_nn_lp; i+=partition,k++){
     const float nt=4;
-    float o=p->noiseoffset[1][i+partition-1]+6;  // threshold of offset
-    float me=0;  // max energy (per partition)
-    float avge=0; // average energy (per partition)
+    float o=p->noiseoffset[1][i+partition-1]+6;  /* threshold of offset */
+    float me=0;  /* max energy (per partition) */
+    float avge=0; /* average energy (per partition) */
 
     if(o<=0)continue;
     if(npeak[k]<-0.5)continue;
@@ -4045,7 +4043,7 @@ void _vp_noisemask(const vorbis_look_psy *p,
       if(me<temp)me=temp;
       avge+=logmdct[i+j];
     }
-    if(avge < (-95*partition))continue; // limit (MDCT AVG. /dB)
+    if(avge < (-95*partition))continue; /* limit (MDCT AVG. /dB) */
 
     if(me<nt){
       npeak[k]=(min(o, nt-me))/nt;
@@ -4059,7 +4057,7 @@ void _vp_noisemask(const vorbis_look_psy *p,
   */
   {
     i=0;
-    if(block_mode>1){ // long and trans. block
+    if(block_mode>1){ /* long and trans. block */
       for(; i<p->tonecomp_endp; i++){
         float temp=logmdct[i]-epeak[i];
         epeak[i]=0.f;
@@ -4166,7 +4164,7 @@ static void set_m3p(local_mod3_psy *mp, const int lW_no, const int impadnum,
     mp->mdctbuf_flag=1;
   }else{
     mp->mdctbuf_flag=0;
-    if(offset_select==0){ // high noise scene
+    if(offset_select==0){ /* high noise scene */
       mp->sw = 0;
       return;
     }
@@ -4182,7 +4180,7 @@ static void set_m3p(local_mod3_psy *mp, const int lW_no, const int impadnum,
   switch(n){
 
     case 128:
-      if(toneatt < 3) count = 2; // q6~
+      if(toneatt < 3) count = 2; /* q6~ */
       else count = 3;
 
       if(!lW_block_mode){ /* last window "short" - type "impulse" */
@@ -4223,7 +4221,7 @@ static void set_m3p(local_mod3_psy *mp, const int lW_no, const int impadnum,
       break;
 
     case 256:
-      // for q-1/-2 44.1kHz/48kHz
+      /* for q-1/-2 44.1kHz/48kHz */
       if(!lW_block_mode){ /* last window "short" - type "impulse" */
           count = 6;
           if(lW_no < 4){
@@ -4289,7 +4287,7 @@ void _vp_offset_and_mix(const vorbis_look_psy *p,
                         const int lW_no, const int impadnum){
 
   int i,j,k,n=p->n;
-  int hsrate=((p->rate<26000) ? 0 : 1); // high sampling rate is 1
+  int hsrate=((p->rate<26000) ? 0 : 1); /* high sampling rate is 1 */
   int partition=(p->vi->normal_p ? p->vi->normal_partition : 16);
   float m1_de, m1_coeffi; /* aoTuV for M1 */
   float toneatt=p->vi->tone_masteratt[offset_select];
@@ -4350,28 +4348,28 @@ void _vp_offset_and_mix(const vorbis_look_psy *p,
           float rate_mod;
           float mainth;
 
-          if(mp3.mdctbuf_flag == 1)tempmdct[i] = logmdct[i]; // overwrite
+          if(mp3.mdctbuf_flag == 1)tempmdct[i] = logmdct[i]; /* overwrite */
           if(logmdct[i]>lastmdct[i]){
             rate_mod = mp3.noise_rate;
           }else{
             rate_mod = mp3.noise_rate_low;
           }
-          // edit tone masking
+          /* edit tone masking */
           if( !impadnum && (i < p->tonecomp_endp) && ((val-lastmdct[i])>20.f) ){
             float dBsub=(logmdct[i]-lastmdct[i]);
             if(dBsub>25.f){
               toneac=1;
-              if(tval>-100.f && ((logmdct[i]-tval)<48.f)){ // limit
+              if(tval>-100.f && ((logmdct[i]-tval)<48.f)){ /* limit */
                 float tr_cur=mp3.tone_rate;
                 if(dBsub<35.f) tr_cur*=((35.f-dBsub)*.1f);
-                //if(dBsub<35.f) tr_cur*=((dBsub-25.f)*.1f);
+                /* if(dBsub<35.f) tr_cur*=((dBsub-25.f)*.1f); */
                 tval-=tr_cur;
-                if(tval<-100.f)tval=-100.f; // lower limit = -100
-                if((logmdct[i]-tval)>48.f)tval=logmdct[i]-48.f; // limit
+                if(tval<-100.f)tval=-100.f; /* lower limit = -100 */
+                if((logmdct[i]-tval)>48.f)tval=logmdct[i]-48.f; /* limit */
               }
             }
           }
-          // main work
+          /* main work */
           if(i > p->m3n[0]){
             mainth=30.f;
           }else if(i > p->m3n[1]){
@@ -4388,11 +4386,11 @@ void _vp_offset_and_mix(const vorbis_look_psy *p,
           else val=lastmdct[i];
 
           if(toneac){
-            float temp=val-max(lastmdct[i], -140); // limit
+            float temp=val-max(lastmdct[i], -140); /* limit */
             if(temp>20.f) val-=(temp-20.f)*.2f;
           }
 
-          // exception of npeak(nepeak) for M8
+          /* exception of npeak(nepeak) for M8 */
           if(toneac==1)npeak[i/partition]=-1.f;
           else if(npeak[i/partition]>0)npeak[i/partition]=0;
         }
@@ -4408,7 +4406,7 @@ void _vp_offset_and_mix(const vorbis_look_psy *p,
       mp4.thres = threshold
     by Aoyumi @ 2006/03/20 - 2010/06/16(fixed)
     */
-    //logmask[i]=max(val,tval);
+    /* logmask[i]=max(val,tval); */
     if(val>tval){
       logmask[i]=val;
     }else if((i>mp4.start) && (i<mp4.end)){
@@ -4463,21 +4461,21 @@ void _vp_offset_and_mix(const vorbis_look_psy *p,
   if(mp3.mdctbuf_flag==1){
     const int mag=8;
     switch(block_mode){
-      case 0: case 1:  // short block (n==128 or 256 only)
-        if(nW_modenumber){ // next long (trans.) block
+      case 0: case 1:   /* short block (n==128 or 256 only) */
+        if(nW_modenumber){ /* next long (trans.) block */
           for(i=0,k=0; i<n; i++,k+=mag){
             for(j=0; j<mag; j++){
               lastmdct[k+j]=logmdct[i];
             }
           }
         }else{
-          memcpy(lastmdct, logmdct, n*sizeof(*lastmdct)); // next short block
+          memcpy(lastmdct, logmdct, n*sizeof(*lastmdct)); /* next short block */
         }
         break;
         
-      case 2:  // trans. block
-        if(!nW_modenumber){ // next short block
-          int nsh = n >> 3; // 1/8
+      case 2:  /* trans. block */
+        if(!nW_modenumber){ /* next short block */
+          int nsh = n >> 3; /* 1/8 */
           for(i=0; i<nsh; i++){
             int ni=i*mag;
             lastmdct[i] = logmdct[ni];
@@ -4488,11 +4486,11 @@ void _vp_offset_and_mix(const vorbis_look_psy *p,
             }
           }
         }else{
-          memcpy(lastmdct, logmdct, n*sizeof(*lastmdct)); // next long block
+          memcpy(lastmdct, logmdct, n*sizeof(*lastmdct)); /* next long block */
         }
         break;
         
-      case 3:  // long block (n==1024 or 2048)
+      case 3:  /* long block (n==1024 or 2048) */
         memcpy(lastmdct, logmdct, n*sizeof(*lastmdct));
         break;
 
@@ -4591,7 +4589,7 @@ static void flag_lossless(int limit, float prepoint, float postpoint, float prep
   if(pointlimit>0){
     point1=prepoint;
     point2=prepoint_r;
-    if((pointlimit-jn)<=0){ // pointlimit is 1~32.
+    if((pointlimit-jn)<=0){ /* pointlimit is 1~32. */
       ps1=(postpoint-prepoint)/jn;
       ps2=(postpoint_r-prepoint_r)/jn;
       ps=1;
@@ -4609,7 +4607,7 @@ static void flag_lossless(int limit, float prepoint, float postpoint, float prep
 
     res[j] = mdct[j]/floor[j];
     r = fabs(res[j]);
-    point1-=enpeak[j]; // reflect enpeak
+    point1-=enpeak[j]; /* reflect enpeak */
     if(point1<prepoint)point1=prepoint;
     if(r<point1){
       if(r<point2){
@@ -4672,10 +4670,10 @@ static float min_indemnity_dipole_hypot(const float a, const float b, const floa
   return (b2-a2*threv);
 }
 
-// OLD HYPOT
+/* OLD HYPOT */
 /*   doing the real circular magnitude calculation is audibly superior
    to (A+B)/sqrt(2) */
-/*static float dipole_hypot(const float a, const float b){
+/* static float dipole_hypot(const float a, const float b){
   if(a>0.){
     if(b>0.)return sqrt(a*a+b*b);
     if(a>-b)return sqrt(a*a-b*b);
@@ -4694,7 +4692,7 @@ static float round_hypot(const float a, const float b){
   if(b<0.)return -sqrt(a*a+b*b);
   if(-a>b)return -sqrt(a*a+b*b);
   return sqrt(b*b+a*a);
-}*/
+} */
 
 /* this is for per-channel noise normalization */
 /*
@@ -4702,7 +4700,7 @@ static int apsort(const void *a, const void *b){
   float f1=**(float**)a;
   float f2=**(float**)b;
   return (f1<f2)-(f1>f2);
-}*/
+} */
 
 
 /* Selection Sort+ */
@@ -4715,10 +4713,10 @@ static void ssort(const int range, int bthresh, float **sort){
   for(i=0; i<bthresh; i++){
     large=i;
     for(j=i+1; j<range; j++){
-      // ascending order
+      /* ascending order */
       if(*sort[large]<*sort[j])large=j;
     }
-    // swap
+    /* swap */ 
     temp=sort[i];
     sort[i]=sort[large];
     sort[large]=temp;
@@ -4735,7 +4733,7 @@ static float noise_normalize(const vorbis_look_psy *p, const int limit, float *r
   float **sort = alloca(n*sizeof(*sort));
   int j,k,count=0;
   int start = (vi->normal_p ? vi->normal_start-i : n);
-  //if(start>n)start=n;
+  /* if(start>n)start=n; */
   if((start>n) || (nepeak<-0.5))start=n;
   acc=0.f;
 
@@ -4751,8 +4749,8 @@ static float noise_normalize(const vorbis_look_psy *p, const int limit, float *r
       if(flags[j]!=1){         /* lossless coupling already quantized.
                                   Don't touch; requantizing based on
                                   energy would be incorrect. */
-        //out[j] = rint(res[j]);
-        // set residue for M6
+        /* out[j] = rint(res[j]);
+        set residue for M6 */
         float ve = sqrt(q[j]/f[j]);
         if(r[j]<0){
           out[j] = -rint(ve);
@@ -4830,10 +4828,10 @@ static float noise_normalize(const vorbis_look_psy *p, const int limit, float *r
     /* noise norm to do */
     int iacc=((int)acc)+1;
     if(iacc>n)iacc=n;
-    // Selection Sort (when there are few elements, this is faster than qsort)
+    /* Selection Sort (when there are few elements, this is faster than qsort) */
     ssort(count, iacc, sort);
-    // Quick Sort
-    //qsort(sort,count,sizeof(*sort),apsort);
+    /* Quick Sort
+    qsort(sort,count,sizeof(*sort),apsort); */
 
     for(k=0;k<count;k++){
       int e=sort[k]-q;
@@ -4920,21 +4918,21 @@ void _vp_couple_quantize_normalize(int blobno,
   for(i=0;i<ch+vi->coupling_steps;i++)
     acc[i]=0.f;
 
-  // limit of rephase
+  /* limit of rephase */
   if(prepoint_x < prepoint) prepoint_x=prepoint;
   if(postpoint_x < prepoint) postpoint_x=prepoint;
 
-  // set initial val for M6
+  /* set initial val for M6 */
   for(i=0;i<vi->coupling_steps;i++){
     side_resdef[i] = -1.f;
   }
 
-  // set phase ratio for M6
+  /* set phase ratio for M6 */
   if(vi->coupling_steps==1) prae=0.34;
   else prae=0.825;
 
 
-  // processing by every partition
+  /* processing by every partition */
   for(i=0,pi=0;i<lowpassr;i+=partition,pi++){
     int k,j,jn = partition > n-i ? n-i : partition;
     int step,track = 0;
@@ -4942,29 +4940,29 @@ void _vp_couple_quantize_normalize(int blobno,
     memcpy(nz,nonzero,sizeof(*nz)*ch);
 
     /* prefill */
-    memset(flag[0],0,ch*partition*sizeof(**flag)); // reset stereo flag
+    memset(flag[0],0,ch*partition*sizeof(**flag)); /* reset stereo flag */
     for(k=0;k<ch;k++){
       int *iout = &iwork[k][i];
       if(nz[k]){
 
         for(j=0;j<jn;j++){
-          // compute floor mag
+          /* compute floor mag */
           floor[k][j] = FLOOR1_fromdB_LOOKUP[iout[j]];
         }
 
-        // compute residue
+        /* compute residue */
         flag_lossless(limit,prepoint,postpoint,prepoint_x,postpoint_x,
                       res[k], &mdct[k][i],&enpeak[k][i],floor[k],flag[k],i,jn);
 
         for(j=0;j<jn;j++){
-          // initial setting for quant/raw
+          /* initial setting for quant/raw */
           quant[k][j] = raw[k][j] = mdct[k][i+j]*mdct[k][i+j];
           if(mdct[k][i+j]<0.f) raw[k][j]*=-1.f;
           floor[k][j]*=floor[k][j];
         }
         
-        // per-channel noise normalization
-        // for lossless or mono mode
+        /* per-channel noise normalization
+         for lossless or mono mode */
         acc[track]=noise_normalize(p,limit,raw[k],quant[k],floor[k],res[k],NULL,acc[track],nepeak[k][pi],i,jn,iout);
 
       }else{
@@ -5013,7 +5011,7 @@ void _vp_couple_quantize_normalize(int blobno,
           int ap;
           float residue_def=0;
 
-          // calculate phase ratio of audio energy and deflection of residue.
+          /* calculate phase ratio of audio energy and deflection of residue. */
           for(j=0;j<jn;j++){
             if(existe(resM[j],0.5) || existe(resA[j],0.5)){
               if(refer_phase(reM[j],reA[j])){
@@ -5024,10 +5022,10 @@ void _vp_couple_quantize_normalize(int blobno,
           }
           ap=rp+pp;
 
-          // based on a calculation result, put up a lossless flag.
+          /* based on a calculation result, put up a lossless flag. */
           if(ap!=0){
-            // deflection of residue
-            float temp_def=residue_def=residue_def/ap; // normalization
+            /* deflection of residue */
+            float temp_def=residue_def=residue_def/ap; /* normalization */
             if(side_resdef[step]>0)residue_def=temp_def*0.5 + side_resdef[step]*0.5;
             side_resdef[step]=temp_def;
             if(residue_def>1.f){
@@ -5035,7 +5033,7 @@ void _vp_couple_quantize_normalize(int blobno,
                 if(fM[j]==-1 || fA[j]==-1) fM[j]=1;
               }
             }
-            // phase ratio of audio energy
+            /* phase ratio of audio energy */
             if((float)rp/ap >= prae){
               for(j=0;j<jn;j++){
                 if((fM[j]==-1 || fA[j]==-1) && refer_phase(reM[j],reA[j])) fM[j]=1;
@@ -5061,10 +5059,10 @@ void _vp_couple_quantize_normalize(int blobno,
 
             }else{
               /* lossy (point) coupling */
-              // aotuv hypot
+              /* aotuv hypot */
               float hpL;
               float hpH;
-              if(vi->coupling_steps==1 || step==3){// needed 'step==3' is for 5.1 channel coupling.
+              if(vi->coupling_steps==1 || step==3){ /* needed 'step==3' is for 5.1 channel coupling. */
                 hpL=.18f;  hpH=.12f;
               }else{
                 hpL=.18f;  hpH=.04f;
@@ -5075,22 +5073,20 @@ void _vp_couple_quantize_normalize(int blobno,
                 reM[j]=min_indemnity_dipole_hypot(reM[j], reA[j], hpH);
               }
 
-              // aotuv hypot (sub)
-              //reM[j]=min_indemnity_dipole_hypotH(reM[j], reA[j]);
+              /* aotuv hypot (sub)
+              reM[j]=min_indemnity_dipole_hypotH(reM[j], reA[j]); */
               
-              // original hypot
-              /*if(j<limit-i){
-                // dipole
+              /* original hypot */
+              /* if(j<limit-i){
                 reM[j] += reA[j];
                 qeM[j] = fabs(reM[j]);
               }else{
-                //elliptical
                 if(reM[j]+reA[j]<0){
                   reM[j] = - (qeM[j] = (fabs(reM[j])+fabs(reA[j])));
                 }else{
                   reM[j] =   (qeM[j] = (fabs(reM[j])+fabs(reA[j])));
                 }
-              }*/
+              } */
 
               qeM[j]=fabs(reM[j]);
               reA[j]=qeA[j]=0.f;
@@ -5099,18 +5095,18 @@ void _vp_couple_quantize_normalize(int blobno,
               resA[j]=0;
 
               if((nepeak[Mi][pi]<-0.5) || (nepeak[Ai][pi]<-0.5)){
-                nepeak[Mi][pi]=-1; // noise normalization is disable
+                nepeak[Mi][pi]=-1; /* noise normalization is disabled */
               }else{
                 nepeak[Mi][pi]=min(nepeak[Mi][pi], nepeak[Ai][pi]);
               }
 
-              // set flag
+              /* set flag */
               pointflag|=1;
             }
-          }/*else{
+          }/* else{
               iM[j]=0;
               iA[j]=0;
-          }*/
+          } */
           floorM[j]=floorA[j]=floorM[j]+floorA[j];
         }
         /* normalize the resulting mag vector (for point stereo) */

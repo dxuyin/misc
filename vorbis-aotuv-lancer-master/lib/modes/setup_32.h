@@ -20,31 +20,28 @@ static const float preamp_32[13]={
 };
 
 static const double rate_mapping_32[13]={
-//  18000.,28000.,35000.,45000.,56000.,60000.,
   16000.,24000.,28000.,32000.,48000.,56000.,64000.,
   80000.,96000.,100000.,112000.,150000.,192000.,
 };
 
 static const double rate_mapping_32_un[13]={
-//  30000.,42000.,52000.,64000.,72000.,78000.,
   24000.,32000.,48000.,56000.,64000.,72000.,80000.,
   84000.,96000.,112000.,128000.,160000.,192000.,
 };
 
 static const double _psy_lowpass_32[13]={
-//  12.3,13.,13.,14.,15.,99.,99.,99.,99.,99.,99.,99.
   12.1,12.6,13.,13.,14.,15.,99.,99.,99.,99.,99.,99.,99.
 };
 
-// short
+/* short */
 static const int _floor_mapping_32a[12]={
   0,0,0,0,2,2,4,5,5,5,5,5
 };
-// long
+/* long */
 static const int _floor_mapping_32b[12]={
   7,7,7,7,7,7,7,7,7,7,7,7
 };
-// LFE only
+/* LFE only */
 static const int _floor_mapping_32c[12]={
   10,10,10,10,10,10,10,10,10,10,10,10
 };
@@ -55,7 +52,6 @@ static const int *_floor_mapping_32[]={
 };
 
 static const ve_setup_data_template ve_setup_32_stereo={
-//  11,
   12,
   rate_mapping_32,
   quality_mapping_44,
@@ -108,7 +104,6 @@ static const ve_setup_data_template ve_setup_32_stereo={
 };
 
 static const ve_setup_data_template ve_setup_32_uncoupled={
-//  11,
   12,
   rate_mapping_32_un,
   quality_mapping_44,

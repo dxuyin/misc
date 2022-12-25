@@ -40,12 +40,10 @@ static const int *_floor_mapping_16[]={
 };
 
 static const double rate_mapping_16[5]={
-//  12000.,20000.,44000.,86000.
   12000.,16000.,24000.,48000.,96000.
 };
 
 static const double rate_mapping_16_uncoupled[5]={
-//  16000.,28000.,64000.,100000.
   16000.,24000.,32000.,64000.,100000.
 };
 
@@ -53,11 +51,9 @@ static const double _global_mapping_16[5]={ 1., 2., 3., 4., 5. };
 
 static const double quality_mapping_16[5]={ -.2,-.1,.05,.5,1. };
 
-//static const double _psy_compand_16_mapping[5]={ 0., 0., .8, 1., 1.};
 static const double _psy_compand_16_mapping[5]={ 0., 1., 1.8, 2., 2.};
 
 static const ve_setup_data_template ve_setup_16_stereo={
-//  3,
   4,
   rate_mapping_16,
   quality_mapping_16,
@@ -110,7 +106,6 @@ static const ve_setup_data_template ve_setup_16_stereo={
 };
 
 static const ve_setup_data_template ve_setup_16_uncoupled={
-//  3,
   4,
   rate_mapping_16_uncoupled,
   quality_mapping_16,

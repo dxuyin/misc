@@ -28,7 +28,6 @@ static const float preamp_48[13]={
 };
 
 static const double rate_mapping_44_stereo[13]={
-//  22500.,32000.,40000.,48000.,56000.,64000.,
   16000.,24000.,32000.,40000.,48000.,56000.,64000.,
   80000.,96000.,112000.,128000.,160000.,256001.
 };
@@ -52,21 +51,18 @@ static const double _psy_compand_long_mapping[13]={
 };
 
 static const double _global_mapping_44[13]={
-  /* 1., 1., 1.5, 2., 2., 2.5, 2.7, 3.0, 3.5, 4., 4. */
-// 0., 1., 1., 1.5, 2., 2., 2.5, 2.7, 3.0, 3.7, 4., 4.
-  0., 0., 0., 1., 2, 2.5, 3., 3.5, 3.7, 4., 4., 5., 5. // low
-//  0., 1., 2., 2., 2.5, 3., 3.2, 4.0, 4.0, 4.0, 4.5, 5., 5. // high
+  0., 0., 0., 1., 2, 2.5, 3., 3.5, 3.7, 4., 4., 5., 5.
 };
 
-// short
+/* short */
 static const int _floor_mapping_44a[12]={
   0,0,0,0,2,2,4,5,5,5,5,5
 };
-// long
+/* long */
 static const int _floor_mapping_44b[12]={
   7,7,7,7,7,7,7,7,7,7,7,7
 };
-// LFE only
+/* LFE only */
 static const int _floor_mapping_44c[12]={
   10,10,10,10,10,10,10,10,10,10,10,10
 };
@@ -78,7 +74,6 @@ static const int *_floor_mapping_44[]={
 };
 
 static const ve_setup_data_template ve_setup_44_stereo={
-//  11,
   12,
   rate_mapping_44_stereo,
   quality_mapping_44,
@@ -131,7 +126,6 @@ static const ve_setup_data_template ve_setup_44_stereo={
 };
 
 static const ve_setup_data_template ve_setup_48_stereo={
-//  11,
   12,
   rate_mapping_44_stereo,
   quality_mapping_44,

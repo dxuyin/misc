@@ -920,8 +920,8 @@ static int mapping0_forward(vorbis_block *vb){
       float *enpeak  =epeak[i];
       float *nepeak  =npeak[i];
 
-      float *lastmdct = b->mblock+i*2048; // 2048 is max block size (n/2)
-      float *tempmdct = b->tblock+i*256;  // 256 is max block size (n/2) for aoTuV M3
+      float *lastmdct = b->mblock+i*2048; /* 2048 is max block size (n/2) */
+      float *tempmdct = b->tblock+i*256;  /* 256 is max block size (n/2) for aoTuV M3 */
 
       float *lowcomp = b->lownoise_compand_level+i;
 
@@ -986,7 +986,7 @@ static int mapping0_forward(vorbis_block *vb){
                     block_mode);
 
 
-// for _vp_noisemask
+/* for _vp_noisemask */
 #if 0
       if(vi->channels==2){
         if(i==0)
@@ -1294,19 +1294,19 @@ static int mapping0_forward(vorbis_block *vb){
                   couple_bundle,zerobundle,ch_in_bundle,classifications,i);
       }
 
-      // if (present window == (long or trans.) ) impadnum=0 [reset]
+      /* if (present window == (long or trans.) ) impadnum=0 [reset] */
       if(block_mode>=2) b->impadnum=0;
-      // if (last window == impulse) && (present window == padding) impadnum=1
+      /* if (last window == impulse) && (present window == padding) impadnum=1 */
       if((!b->lW_block_mode) && (block_mode==1)) b->impadnum=1;
       else if(b->impadnum && b->impadnum<8) b->impadnum++;
-      // if (current block type == last block type) lW_no++
+      /* if (current block type == last block type) lW_no++ */
       if(b->lW_block_mode==block_mode) b->lW_no++;
       else b->lW_no = 1;
       b->lW_block_mode = block_mode;
       /* ok, done encoding.  Next protopacket. */
 
-      // check block type
-      /*if(modenumber && blocktype)printf("[L]\n");
+      /* check block type
+      if(modenumber && blocktype)printf("[L]\n");
       else if(modenumber && !blocktype)printf("[T]\n");
       else if(!modenumber && blocktype)printf("[P]\n");
       else if(!modenumber && !blocktype)printf("[I]\n");*/

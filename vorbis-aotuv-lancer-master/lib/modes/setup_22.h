@@ -19,19 +19,16 @@ static const float preamp_22[5]={
 };
 
 static const double rate_mapping_22[5]={
-//  15000.,20000.,44000.,86000.
   8000.,16000.,24000.,48000.,96000.
 };
 
 static const double rate_mapping_22_uncoupled[5]={
-//  16000.,28000.,50000.,90000.
   16000.,24000.,32000.,56000.,96000.
 };
 
 static const double _psy_lowpass_22[5]={8.5,9.5,11.,30.,99.};
 
 static const ve_setup_data_template ve_setup_22_stereo={
-//  3,
   4,
   rate_mapping_22,
   quality_mapping_16,
@@ -84,7 +81,6 @@ static const ve_setup_data_template ve_setup_22_stereo={
 };
 
 static const ve_setup_data_template ve_setup_22_uncoupled={
-//  3,
   4,
   rate_mapping_22_uncoupled,
   quality_mapping_16,
