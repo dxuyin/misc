@@ -115,7 +115,7 @@ void _perf_result(int index)
 #endif
 
 /*---------------------------------------------------------------------------
-  16Byte Allignment malloc
+   16Byte Allignment malloc
 ---------------------------------------------------------------------------*/
 void* xmm_malloc(size_t size)
 {
