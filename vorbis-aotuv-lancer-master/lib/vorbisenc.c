@@ -1216,9 +1216,7 @@ int vorbis_encode_ctl(vorbis_info *vi,int number,void *arg){
       {
         double *farg=(double *)arg;
         hi->lowpass_kHz=*farg;
-
-        if(hi->lowpass_kHz<2.)hi->lowpass_kHz=2.;
-        if(hi->lowpass_kHz>99.)hi->lowpass_kHz=99.;
+        /* unlimited lowpass by 後藤ひとり */
         hi->lowpass_altered=1;
       }
       return(0);
