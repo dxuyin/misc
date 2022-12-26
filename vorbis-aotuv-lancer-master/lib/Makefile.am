@@ -26,15 +26,6 @@ libvorbisenc_la_SOURCES = vorbisenc.c
 libvorbisenc_la_LDFLAGS = -no-undefined -version-info @VE_LIB_CURRENT@:@VE_LIB_REVISION@:@VE_LIB_AGE@
 libvorbisenc_la_LIBADD = libvorbis.la @OGG_LIBS@
 
-EXTRA_PROGRAMS = barkmel tone psytune
-CLEANFILES = $(EXTRA_PROGRAMS)
-
-barkmel_SOURCES = barkmel.c
-tone_SOURCES = tone.c
-psytune_SOURCES = psytune.c
-psytune_LDFLAGS = -static
-psytune_LDADD = libvorbis.la
-
 EXTRA_DIST = lookups.pl CMakeLists.txt
 
 # build and run the self tests on 'make check'
