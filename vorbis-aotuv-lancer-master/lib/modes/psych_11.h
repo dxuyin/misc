@@ -10,7 +10,7 @@
  *                                                                  *
  ********************************************************************
 
- function: 11kHz settings 
+ function: 11kHz settings
 
  ********************************************************************/
 
@@ -53,7 +53,7 @@ static const att3 _psy_tone_masteratt_11[4]={
 };
 
 /* lowpass by mode **************/
-static const double _psy_lowpass_11[4]={4.,4.5,5.5,30.,};
+static const double _psy_lowpass_11[4]={30.,30.,30.,30.,};
 
 /* noise normalization **********/
 static const double _noise_thresh_11[3]={ .3,.3,.5 };

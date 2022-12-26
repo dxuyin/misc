@@ -1216,7 +1216,7 @@ int vorbis_encode_ctl(vorbis_info *vi,int number,void *arg){
       {
         double *farg=(double *)arg;
         hi->lowpass_kHz=*farg;
-        /* unlimited lowpass by 後藤ひとり */
+        /* 後藤ひとり */
         hi->lowpass_altered=1;
       }
       return(0);
@@ -1230,9 +1230,7 @@ int vorbis_encode_ctl(vorbis_info *vi,int number,void *arg){
       {
         double *farg=(double *)arg;
         hi->impulse_noisetune=*farg;
-
-        if(hi->impulse_noisetune>0.)hi->impulse_noisetune=0.;
-        if(hi->impulse_noisetune<-15.)hi->impulse_noisetune=-15.;
+	/* 後藤ひとり */
       }
       return(0);
     case OV_ECTL_COUPLING_GET:

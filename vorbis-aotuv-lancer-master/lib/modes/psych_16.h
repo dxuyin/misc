@@ -10,7 +10,7 @@
  *                                                                  *
  ********************************************************************
 
- function: 16kHz settings 
+ function: 16kHz settings
 
  ********************************************************************/
 
@@ -104,10 +104,10 @@ static const noiseguard _psy_noiseguards_16[4]={
 
 /* ath ****************/
 static const int _psy_ath_floater_16[5]={
-  -100,-100,-100,-100,-105,
+  -999,-999,-999,-999,-999,
 };
 static const int _psy_ath_abs_16[5]={
-  -130,-130,-130,-130,-140,
+  -999,-999,-999,-999,-999,
 };
 
 /* stereo mode by base quality level */
@@ -145,7 +145,7 @@ static const att3 _psy_tone_masteratt_16[5]={
 };
 
 /* lowpass by mode **************/
-static const double _psy_lowpass_16[5]={6.,6.5,8,30.,99.};
+static const double _psy_lowpass_16[5]={99.,99.,99.,99.,99.};
 
 /* noise normalization **********/
 static const int _noise_start_16[4]={ 256,256,256,9999 };

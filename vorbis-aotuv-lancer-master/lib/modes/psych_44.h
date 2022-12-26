@@ -20,7 +20,7 @@
 static const vorbis_info_psy_global _psy_global_44[8]={
 /*
   { lines per eighth octave,
-   { pre-echo thresh.}, 
+   { pre-echo thresh.},
    { post-echo thresh.}, stretch penalty, pre-echo minimum energy,
    ampmax att 1/sec,
    {coupling point(kHz)},{{coupling point limit0},{coupling point limit1}},
@@ -416,10 +416,10 @@ static const vorbis_info_psy _psy_info_template={
   /* blockflag */
   -1,
   /* ath_adjatt, ath_maxatt */
-  -140.,-140.,
+  -999.,-999.,
   /* tonemask att boost/decay,suppr,curves */
-  {0.f,0.f,0.f},     0.,0.,    -40.f, {0.},  
-  
+  {0.f,0.f,0.f},     0.,0.,    -40.f, {0.},
+
   /*noisemaskp,supp, low/high window, low/hi guard, minimum */
   1,          -0.f,           .5f, .5f,         0,0,0,
   /* noiseoffset*3, noisecompand, noisecompand-high, flacint, max_curve_dB */
@@ -431,10 +431,10 @@ static const vorbis_info_psy _psy_info_template={
 /* ath ****************/
 
 static const int _psy_ath_floater[13]={
-  -100,-100,-100,-100,-100,-100,-100,-105,-105,-105,-105,-110,-120,
+  -999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,
 };
 static const int _psy_ath_abs[13]={
-  -130,-130,-130,-130,-130,-135,-140,-140,-140,-140,-140,-140,-150,
+  -999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,
 };
 
 /* stereo setup.  These don't map directly to quality level, there's
@@ -533,7 +533,7 @@ static att3 _psy_tone_masteratt_44[13]={
 
 /* lowpass by mode **************/
 static const double _psy_lowpass_44[13]={
-  16.3,16.3,16.3,16.3,16.3,17.2,18.3,20.1,999.,999.,999.,999.,999.
+  999.,999.,999.,999.,999.,999.,999.,999.,999.,999.,999.,999.,999.
 };
 
 /* noise normalization **********/

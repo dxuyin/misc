@@ -10,7 +10,7 @@
  *                                                                  *
  ********************************************************************
 
- function: 8kHz psychoacoustic settings 
+ function: 8kHz psychoacoustic settings
 
  ********************************************************************/
 
@@ -78,10 +78,10 @@ static const noiseguard _psy_noiseguards_8[3]={
 
 /* ath ****************/
 static const int _psy_ath_floater_8[4]={
-  -100,-100,-100,-105,
+ -999,-999,-999,-999,
 };
 static const int _psy_ath_abs_8[4]={
-  -130,-130,-130,-140,
+ -999,-999,-999,-999,
 };
 
 /* stereo mode by base quality level */
@@ -114,7 +114,7 @@ static const att3 _psy_tone_masteratt_8[4]={
 };
 
 /* lowpass by mode **************/
-static const double _psy_lowpass_8[4]={2.6,3.,4.,4.};
+static const double _psy_lowpass_8[4]={4.,4.,4.,4.};
 
 /* noise normalization **********/
 static const int _noise_start_8[3]={

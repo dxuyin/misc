@@ -89,7 +89,7 @@ void _analysis_output_always(char *base,int i,float *v,int n,int bark,int dB,ogg
     if(dB){
       float val;
       if(v[j]==0.)
-        val=-140.;
+        val=-999.;
       else
         val=todB(v+j);
       fprintf(of,"%f\n",val);
