@@ -3786,7 +3786,7 @@ void _vp_noisemask(const vorbis_look_psy *p,
 
 #ifdef __SSE__												/* SSE Optimize */
 	bark_noise_hybridmp(p,logmdct,logmask,
-		      140.,-1, bwork, work+n);
+		      999.,-1, bwork, work+n);
 
 	for(i=0;i<n;i+=16)
 	{
@@ -3814,7 +3814,7 @@ void _vp_noisemask(const vorbis_look_psy *p,
 		      p->vi->noisewindowfixed, bwork, work+n);
 #else														/* SSE Optimize */
   bark_noise_hybridmp(n,p->bark,logmdct,logmask,
-                      140.,-1);
+                      999.,-1);
 
   for(i=0;i<n;i++)work[i]=logmdct[i]-logmask[i];
 
@@ -4386,7 +4386,7 @@ void _vp_offset_and_mix(const vorbis_look_psy *p,
           else val=lastmdct[i];
 
           if(toneac){
-            float temp=val-max(lastmdct[i], -140); /* limit */
+            float temp=val-max(lastmdct[i], -999); /* limit */
             if(temp>20.f) val-=(temp-20.f)*.2f;
           }
 
