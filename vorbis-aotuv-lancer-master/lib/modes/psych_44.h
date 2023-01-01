@@ -423,7 +423,7 @@ static const vorbis_info_psy _psy_info_template={
   /*noisemaskp,supp, low/high window, low/hi guard, minimum */
   1,          -0.f,           .5f, .5f,         0,0,0,
   /* noiseoffset*3, noisecompand, noisecompand-high, flacint, max_curve_dB */
-  {{-1},{-1},{-1}},{-1},{-1},0., 105.f,
+  {{-1},{-1},{-1}},{-1},{-1},0., 999.f,
   /* noise normalization - noise_p, start, partition, thresh. */
   0,-1,-1,0.,
 };
