@@ -446,6 +446,7 @@ static const int _psy_ath_abs[13]={
 /* various stereo possibilities */
 
 /* stereo mode by base quality level */
+
 static adj_stereo _psy_stereo_modes_44[13]={
   /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14        -2(addition mode)  */
   {{  4,  4,  4,  4,  4,  4,  4,  4,  3,  2,  1,  0,  0,  0,  0},

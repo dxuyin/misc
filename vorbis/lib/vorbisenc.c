@@ -1230,7 +1230,7 @@ int vorbis_encode_ctl(vorbis_info *vi,int number,void *arg){
       {
         double *farg=(double *)arg;
         hi->impulse_noisetune=*farg;
-	/* 後藤ひとり */
+	      /* 後藤ひとり */
       }
       return(0);
     case OV_ECTL_COUPLING_GET:
