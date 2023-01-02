@@ -22,7 +22,7 @@ static const float preamp_16[5]={
 };
 
 static const int blocksize_16_short[4]={
-  512,512,512,512
+  1024,1024,512,512
 };
 static const int blocksize_16_long[4]={
   1024,1024,1024,1024
