@@ -152,4 +152,4 @@ static const int _noise_start_16[4]={ 256,256,256,9999 };
 
 static const int _noise_part_16[4]={ 8,8,8,8 };
 
-static const double _noise_thresh_16[4]={ .3,.4,.5,.5 };
+static const double _noise_thresh_16[4]={ .3,.4,.5,.6 };

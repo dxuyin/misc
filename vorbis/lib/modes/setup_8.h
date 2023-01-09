@@ -10,7 +10,7 @@
  *                                                                  *
  ********************************************************************
 
- function: 8kHz settings 
+ function: 8kHz settings
 
  ********************************************************************/
 
@@ -18,7 +18,7 @@
 #include "residue_8.h"
 
 static const float preamp_8[4]={
-0.965, 0.965, 0.965, 1.f
+1.f, 1.f, 1.f, 1.f
 };
 
 static const int blocksize_8[3]={

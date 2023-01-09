@@ -10,7 +10,7 @@
  *                                                                  *
  ********************************************************************
 
- function: 22kHz settings 
+ function: 22kHz settings
 
  ********************************************************************/
 
@@ -26,7 +26,7 @@ static const double rate_mapping_22_uncoupled[5]={
   16000.,24000.,32000.,56000.,96000.
 };
 
-static const double _psy_lowpass_22[5]={8.5,9.5,11.,30.,99.};
+static const double _psy_lowpass_22[5]={99.,99.,99.,99.,99.};
 
 static const ve_setup_data_template ve_setup_22_stereo={
   4,
@@ -131,3 +131,4 @@ static const ve_setup_data_template ve_setup_22_uncoupled={
 
   _mapres_template_16_uncoupled
 };
+

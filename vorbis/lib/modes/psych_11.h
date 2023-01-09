@@ -56,4 +56,4 @@ static const att3 _psy_tone_masteratt_11[4]={
 static const double _psy_lowpass_11[4]={30.,30.,30.,30.,};
 
 /* noise normalization **********/
-static const double _noise_thresh_11[3]={ .3,.3,.5 };
+static const double _noise_thresh_11[3]={ .3,.4,.5 };

@@ -51,7 +51,7 @@ static const double _psy_compand_long_mapping[13]={
 };
 
 static const double _global_mapping_44[13]={
-  0., 1., 2., 2., 2.5, 3., 3., 3.5, 3.7, 4., 4., 5., 5.
+  2., 2., 2., 2., 2.5, 3., 3., 3.5, 3.7, 4., 4., 5., 5.
 };
 
 /* short */
