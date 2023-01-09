@@ -19,8 +19,8 @@
 #include "modes/psych_44.h"
 
 static const float preamp_44[13]={
-0.993, 0.993,
-0.997, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f
+1.f, 1.f,
+1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f
 };
 static const float preamp_48[13]={
 1.f, 1.f,
@@ -51,7 +51,7 @@ static const double _psy_compand_long_mapping[13]={
 };
 
 static const double _global_mapping_44[13]={
-  0., 0., 0., 1., 2, 2.5, 3., 3.5, 3.7, 4., 4., 5., 5.
+  1., 1., 1., 1., 2, 2.5, 3., 3.5, 3.7, 4., 4., 5., 5.
 };
 
 /* short */
@@ -89,7 +89,7 @@ static const ve_setup_data_template ve_setup_44_stereo={
   _psy_tone_0dB,
   _psy_tone_suppress,
 
-  _vp_tonemask_adj_otherblock, // impulse
+  _vp_tonemask_adj_otherblock, /* impulse */
   _vp_tonemask_adj_longblock,
   _vp_tonemask_adj_otherblock,
 
@@ -141,7 +141,7 @@ static const ve_setup_data_template ve_setup_48_stereo={
   _psy_tone_0dB,
   _psy_tone_suppress,
 
-  _vp_tonemask_adj_otherblock, // impulse
+  _vp_tonemask_adj_otherblock, /* impulse */
   _vp_tonemask_adj_longblock,
   _vp_tonemask_adj_otherblock,
 
