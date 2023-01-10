@@ -476,15 +476,21 @@ static int accumulate_fit(const float *flr,const float *mdct,
 
 static int fit_line(lsfit_acc *a,int fits,int *y0,int *y1,
                     vorbis_info_floor1 *info){
-  double weight;
-  double xa=0,ya=0,x2a=0,y2a=0,xya=0,an=0;
   double xb=0,yb=0,x2b=0,y2b=0,xyb=0,bn=0;
   int i;
   int x0=a[0].x0;
   int x1=a[fits-1].x1;
 
   for(i=0;i<fits;i++){
-    double weight = (a[i].bn+a[i].an)*info->twofitweight/(a[i].an+1)+1.;
+
+    /* This process is a bit odd as I'm preserving the weighting
+       behavior of 1.2.3 for now.  Although I can hear no difference,
+       what appears to be a better more straightforward weighting
+       slightly drops PEAQ and increases bitrate.  For that reason,
+       I'm preserving the old behavior until I can explain why the
+       bettwer weighting measures poorly. */
+
+    double weight = floor((a[i].bn+a[i].an)*info->twofitweight/(a[i].an+1))+1.;
 
     xb+=a[i].xb + a[i].xa * weight;
     yb+=a[i].yb + a[i].ya * weight;
@@ -502,7 +508,6 @@ static int fit_line(lsfit_acc *a,int fits,int *y0,int *y1,
     xyb+= *y0 *  x0;
     bn++;
   }
-
   if(*y1>=0){
     xb+=   x1;
     yb+=  *y1;

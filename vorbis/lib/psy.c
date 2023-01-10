@@ -3786,7 +3786,7 @@ void _vp_noisemask(const vorbis_look_psy *p,
 
 #ifdef __SSE__												/* SSE Optimize */
 	bark_noise_hybridmp(p,logmdct,logmask,
-		      999.,-1, bwork, work+n);
+		      140.,-1, bwork, work+n);
 
 	for(i=0;i<n;i+=16)
 	{
@@ -3814,7 +3814,7 @@ void _vp_noisemask(const vorbis_look_psy *p,
 		      p->vi->noisewindowfixed, bwork, work+n);
 #else														/* SSE Optimize */
   bark_noise_hybridmp(n,p->bark,logmdct,logmask,
-                      999.,-1);
+                      140.,-1);
 
   for(i=0;i<n;i++)work[i]=logmdct[i]-logmask[i];
 
