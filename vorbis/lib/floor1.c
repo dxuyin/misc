@@ -474,15 +474,17 @@ static int accumulate_fit(const float *flr,const float *mdct,
   return(na);
 }
 
-static int fit_line(lsfit_acc *a,int fits,int *y0,int *y1,
+static int
+fit_line(lsfit_acc *a,int fits,int *y0,int *y1,
                     vorbis_info_floor1 *info)
 {
   double xb=0, yb=0, x2b=0, y2b=0, xyb=0, bn=0;
   int i;
-  int x0=a[0].x0;
-  int x1=a[fits-1].x1;
+  int x0 = a[0].x0;
+  int x1 = a[fits - 1].x1;
 
   for(i = 0; i < fits; i++){
+	  
     /* This process is a bit odd as I'm preserving the weighting
        behavior of 1.2.3 for now.  Although I can hear no difference,
        what appears to be a better more straightforward weighting
