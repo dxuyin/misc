@@ -1,0 +1,466 @@
+\doxysection{codec.\+h File Reference}
+\label{codec_8h}\index{codec.h@{codec.h}}
+{\ttfamily \#include $<$ogg/ogg.\+h$>$}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ vorbis\+\_\+info}
+\item 
+struct \textbf{ vorbis\+\_\+dsp\+\_\+state}
+\item 
+struct \textbf{ vorbis\+\_\+block}
+\item 
+struct \textbf{ alloc\+\_\+chain}
+\item 
+struct \textbf{ vorbis\+\_\+comment}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \textbf{ OV\+\_\+\+FALSE}~-\/1
+\item 
+\#define \textbf{ OV\+\_\+\+EOF}~-\/2
+\item 
+\#define \textbf{ OV\+\_\+\+HOLE}~-\/3
+\item 
+\#define \textbf{ OV\+\_\+\+EREAD}~-\/128
+\item 
+\#define \textbf{ OV\+\_\+\+EFAULT}~-\/129
+\item 
+\#define \textbf{ OV\+\_\+\+EIMPL}~-\/130
+\item 
+\#define \textbf{ OV\+\_\+\+EINVAL}~-\/131
+\item 
+\#define \textbf{ OV\+\_\+\+ENOTVORBIS}~-\/132
+\item 
+\#define \textbf{ OV\+\_\+\+EBADHEADER}~-\/133
+\item 
+\#define \textbf{ OV\+\_\+\+EVERSION}~-\/134
+\item 
+\#define \textbf{ OV\+\_\+\+ENOTAUDIO}~-\/135
+\item 
+\#define \textbf{ OV\+\_\+\+EBADPACKET}~-\/136
+\item 
+\#define \textbf{ OV\+\_\+\+EBADLINK}~-\/137
+\item 
+\#define \textbf{ OV\+\_\+\+ENOSEEK}~-\/138
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \textbf{ vorbis\+\_\+info} \textbf{ vorbis\+\_\+info}
+\item 
+typedef struct \textbf{ vorbis\+\_\+dsp\+\_\+state} \textbf{ vorbis\+\_\+dsp\+\_\+state}
+\item 
+typedef struct \textbf{ vorbis\+\_\+block} \textbf{ vorbis\+\_\+block}
+\item 
+typedef struct \textbf{ vorbis\+\_\+comment} \textbf{ vorbis\+\_\+comment}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ vorbis\+\_\+info\+\_\+init} (\textbf{ vorbis\+\_\+info} $\ast$vi)
+\item 
+void \textbf{ vorbis\+\_\+info\+\_\+clear} (\textbf{ vorbis\+\_\+info} $\ast$vi)
+\item 
+int \textbf{ vorbis\+\_\+info\+\_\+blocksize} (\textbf{ vorbis\+\_\+info} $\ast$vi, int zo)
+\item 
+void \textbf{ vorbis\+\_\+comment\+\_\+init} (\textbf{ vorbis\+\_\+comment} $\ast$vc)
+\item 
+void \textbf{ vorbis\+\_\+comment\+\_\+add} (\textbf{ vorbis\+\_\+comment} $\ast$vc, const char $\ast$comment)
+\item 
+void \textbf{ vorbis\+\_\+comment\+\_\+add\+\_\+tag} (\textbf{ vorbis\+\_\+comment} $\ast$vc, const char $\ast$tag, const char $\ast$contents)
+\item 
+char $\ast$ \textbf{ vorbis\+\_\+comment\+\_\+query} (\textbf{ vorbis\+\_\+comment} $\ast$vc, const char $\ast$tag, int count)
+\item 
+int \textbf{ vorbis\+\_\+comment\+\_\+query\+\_\+count} (\textbf{ vorbis\+\_\+comment} $\ast$vc, const char $\ast$tag)
+\item 
+void \textbf{ vorbis\+\_\+comment\+\_\+clear} (\textbf{ vorbis\+\_\+comment} $\ast$vc)
+\item 
+int \textbf{ vorbis\+\_\+block\+\_\+init} (\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$v, \textbf{ vorbis\+\_\+block} $\ast$vb)
+\item 
+int \textbf{ vorbis\+\_\+block\+\_\+clear} (\textbf{ vorbis\+\_\+block} $\ast$vb)
+\item 
+void \textbf{ vorbis\+\_\+dsp\+\_\+clear} (\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$v)
+\item 
+double \textbf{ vorbis\+\_\+granule\+\_\+time} (\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$v, ogg\+\_\+int64\+\_\+t granulepos)
+\item 
+const char $\ast$ \textbf{ vorbis\+\_\+version\+\_\+string} (void)
+\item 
+int \textbf{ vorbis\+\_\+analysis\+\_\+init} (\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$v, \textbf{ vorbis\+\_\+info} $\ast$vi)
+\item 
+int \textbf{ vorbis\+\_\+commentheader\+\_\+out} (\textbf{ vorbis\+\_\+comment} $\ast$vc, ogg\+\_\+packet $\ast$op)
+\item 
+int \textbf{ vorbis\+\_\+analysis\+\_\+headerout} (\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$v, \textbf{ vorbis\+\_\+comment} $\ast$vc, ogg\+\_\+packet $\ast$op, ogg\+\_\+packet $\ast$op\+\_\+comm, ogg\+\_\+packet $\ast$op\+\_\+code)
+\item 
+float $\ast$$\ast$ \textbf{ vorbis\+\_\+analysis\+\_\+buffer} (\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$v, int vals)
+\item 
+int \textbf{ vorbis\+\_\+analysis\+\_\+wrote} (\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$v, int vals)
+\item 
+int \textbf{ vorbis\+\_\+analysis\+\_\+blockout} (\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$v, \textbf{ vorbis\+\_\+block} $\ast$vb)
+\item 
+int \textbf{ vorbis\+\_\+analysis} (\textbf{ vorbis\+\_\+block} $\ast$vb, ogg\+\_\+packet $\ast$op)
+\item 
+int \textbf{ vorbis\+\_\+bitrate\+\_\+addblock} (\textbf{ vorbis\+\_\+block} $\ast$vb)
+\item 
+int \textbf{ vorbis\+\_\+bitrate\+\_\+flushpacket} (\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$vd, ogg\+\_\+packet $\ast$op)
+\item 
+int \textbf{ vorbis\+\_\+synthesis\+\_\+idheader} (ogg\+\_\+packet $\ast$op)
+\item 
+int \textbf{ vorbis\+\_\+synthesis\+\_\+headerin} (\textbf{ vorbis\+\_\+info} $\ast$vi, \textbf{ vorbis\+\_\+comment} $\ast$vc, ogg\+\_\+packet $\ast$op)
+\item 
+int \textbf{ vorbis\+\_\+synthesis\+\_\+init} (\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$v, \textbf{ vorbis\+\_\+info} $\ast$vi)
+\item 
+int \textbf{ vorbis\+\_\+synthesis\+\_\+restart} (\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$v)
+\item 
+int \textbf{ vorbis\+\_\+synthesis} (\textbf{ vorbis\+\_\+block} $\ast$vb, ogg\+\_\+packet $\ast$op)
+\item 
+int \textbf{ vorbis\+\_\+synthesis\+\_\+trackonly} (\textbf{ vorbis\+\_\+block} $\ast$vb, ogg\+\_\+packet $\ast$op)
+\item 
+int \textbf{ vorbis\+\_\+synthesis\+\_\+blockin} (\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$v, \textbf{ vorbis\+\_\+block} $\ast$vb)
+\item 
+int \textbf{ vorbis\+\_\+synthesis\+\_\+pcmout} (\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$v, float $\ast$$\ast$$\ast$pcm)
+\item 
+int \textbf{ vorbis\+\_\+synthesis\+\_\+lapout} (\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$v, float $\ast$$\ast$$\ast$pcm)
+\item 
+int \textbf{ vorbis\+\_\+synthesis\+\_\+read} (\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$v, int samples)
+\item 
+long \textbf{ vorbis\+\_\+packet\+\_\+blocksize} (\textbf{ vorbis\+\_\+info} $\ast$vi, ogg\+\_\+packet $\ast$op)
+\item 
+int \textbf{ vorbis\+\_\+synthesis\+\_\+halfrate} (\textbf{ vorbis\+\_\+info} $\ast$v, int flag)
+\item 
+int \textbf{ vorbis\+\_\+synthesis\+\_\+halfrate\+\_\+p} (\textbf{ vorbis\+\_\+info} $\ast$v)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\label{codec_8h_a6fe885e6d02f8461dbb16cb6529f4e6a}} 
+\index{codec.h@{codec.h}!OV\_EBADHEADER@{OV\_EBADHEADER}}
+\index{OV\_EBADHEADER@{OV\_EBADHEADER}!codec.h@{codec.h}}
+\doxysubsubsection{OV\_EBADHEADER}
+{\footnotesize\ttfamily \#define OV\+\_\+\+EBADHEADER~-\/133}
+
+\mbox{\label{codec_8h_a51932f4fbe8e5067294677db0b816407}} 
+\index{codec.h@{codec.h}!OV\_EBADLINK@{OV\_EBADLINK}}
+\index{OV\_EBADLINK@{OV\_EBADLINK}!codec.h@{codec.h}}
+\doxysubsubsection{OV\_EBADLINK}
+{\footnotesize\ttfamily \#define OV\+\_\+\+EBADLINK~-\/137}
+
+\mbox{\label{codec_8h_a14668f122987aae48c604a2d4bebc353}} 
+\index{codec.h@{codec.h}!OV\_EBADPACKET@{OV\_EBADPACKET}}
+\index{OV\_EBADPACKET@{OV\_EBADPACKET}!codec.h@{codec.h}}
+\doxysubsubsection{OV\_EBADPACKET}
+{\footnotesize\ttfamily \#define OV\+\_\+\+EBADPACKET~-\/136}
+
+\mbox{\label{codec_8h_a3d141c110b00f35839b12990c2068b01}} 
+\index{codec.h@{codec.h}!OV\_EFAULT@{OV\_EFAULT}}
+\index{OV\_EFAULT@{OV\_EFAULT}!codec.h@{codec.h}}
+\doxysubsubsection{OV\_EFAULT}
+{\footnotesize\ttfamily \#define OV\+\_\+\+EFAULT~-\/129}
+
+\mbox{\label{codec_8h_a08c7ebf52ffeeedc4c2d89c93f912d2e}} 
+\index{codec.h@{codec.h}!OV\_EIMPL@{OV\_EIMPL}}
+\index{OV\_EIMPL@{OV\_EIMPL}!codec.h@{codec.h}}
+\doxysubsubsection{OV\_EIMPL}
+{\footnotesize\ttfamily \#define OV\+\_\+\+EIMPL~-\/130}
+
+\mbox{\label{codec_8h_a8d9ffc3bd8fa69afd38d2f2dc0134af3}} 
+\index{codec.h@{codec.h}!OV\_EINVAL@{OV\_EINVAL}}
+\index{OV\_EINVAL@{OV\_EINVAL}!codec.h@{codec.h}}
+\doxysubsubsection{OV\_EINVAL}
+{\footnotesize\ttfamily \#define OV\+\_\+\+EINVAL~-\/131}
+
+\mbox{\label{codec_8h_a80e871397b1c816a3209b0683a7910db}} 
+\index{codec.h@{codec.h}!OV\_ENOSEEK@{OV\_ENOSEEK}}
+\index{OV\_ENOSEEK@{OV\_ENOSEEK}!codec.h@{codec.h}}
+\doxysubsubsection{OV\_ENOSEEK}
+{\footnotesize\ttfamily \#define OV\+\_\+\+ENOSEEK~-\/138}
+
+\mbox{\label{codec_8h_a1c44d32e18871246c63c526371b5a54f}} 
+\index{codec.h@{codec.h}!OV\_ENOTAUDIO@{OV\_ENOTAUDIO}}
+\index{OV\_ENOTAUDIO@{OV\_ENOTAUDIO}!codec.h@{codec.h}}
+\doxysubsubsection{OV\_ENOTAUDIO}
+{\footnotesize\ttfamily \#define OV\+\_\+\+ENOTAUDIO~-\/135}
+
+\mbox{\label{codec_8h_a6e2fe5774db6c9869d400447aac16307}} 
+\index{codec.h@{codec.h}!OV\_ENOTVORBIS@{OV\_ENOTVORBIS}}
+\index{OV\_ENOTVORBIS@{OV\_ENOTVORBIS}!codec.h@{codec.h}}
+\doxysubsubsection{OV\_ENOTVORBIS}
+{\footnotesize\ttfamily \#define OV\+\_\+\+ENOTVORBIS~-\/132}
+
+\mbox{\label{codec_8h_a97076d795abbda850630100b817f3aee}} 
+\index{codec.h@{codec.h}!OV\_EOF@{OV\_EOF}}
+\index{OV\_EOF@{OV\_EOF}!codec.h@{codec.h}}
+\doxysubsubsection{OV\_EOF}
+{\footnotesize\ttfamily \#define OV\+\_\+\+EOF~-\/2}
+
+\mbox{\label{codec_8h_a45b8d5b76a5e650129133cfb4625a082}} 
+\index{codec.h@{codec.h}!OV\_EREAD@{OV\_EREAD}}
+\index{OV\_EREAD@{OV\_EREAD}!codec.h@{codec.h}}
+\doxysubsubsection{OV\_EREAD}
+{\footnotesize\ttfamily \#define OV\+\_\+\+EREAD~-\/128}
+
+\mbox{\label{codec_8h_a4e9b28b26ddaa3b50330cc72a7fd2e03}} 
+\index{codec.h@{codec.h}!OV\_EVERSION@{OV\_EVERSION}}
+\index{OV\_EVERSION@{OV\_EVERSION}!codec.h@{codec.h}}
+\doxysubsubsection{OV\_EVERSION}
+{\footnotesize\ttfamily \#define OV\+\_\+\+EVERSION~-\/134}
+
+\mbox{\label{codec_8h_aa6095426002d96721718de64bde50f84}} 
+\index{codec.h@{codec.h}!OV\_FALSE@{OV\_FALSE}}
+\index{OV\_FALSE@{OV\_FALSE}!codec.h@{codec.h}}
+\doxysubsubsection{OV\_FALSE}
+{\footnotesize\ttfamily \#define OV\+\_\+\+FALSE~-\/1}
+
+\mbox{\label{codec_8h_a74990820c57ba993081620f5bdd088dc}} 
+\index{codec.h@{codec.h}!OV\_HOLE@{OV\_HOLE}}
+\index{OV\_HOLE@{OV\_HOLE}!codec.h@{codec.h}}
+\doxysubsubsection{OV\_HOLE}
+{\footnotesize\ttfamily \#define OV\+\_\+\+HOLE~-\/3}
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\label{codec_8h_a0642c8e8f585a5556c0c74735cc9de8a}} 
+\index{codec.h@{codec.h}!vorbis\_block@{vorbis\_block}}
+\index{vorbis\_block@{vorbis\_block}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_block}
+{\footnotesize\ttfamily typedef struct \textbf{ vorbis\+\_\+block} \textbf{ vorbis\+\_\+block}}
+
+\mbox{\label{codec_8h_a86b64bad1e47f16f248d65e5e5459bcc}} 
+\index{codec.h@{codec.h}!vorbis\_comment@{vorbis\_comment}}
+\index{vorbis\_comment@{vorbis\_comment}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_comment}
+{\footnotesize\ttfamily typedef struct \textbf{ vorbis\+\_\+comment} \textbf{ vorbis\+\_\+comment}}
+
+\mbox{\label{codec_8h_a7d1df02911c98d6c497416d7a6db4918}} 
+\index{codec.h@{codec.h}!vorbis\_dsp\_state@{vorbis\_dsp\_state}}
+\index{vorbis\_dsp\_state@{vorbis\_dsp\_state}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_dsp\_state}
+{\footnotesize\ttfamily typedef struct \textbf{ vorbis\+\_\+dsp\+\_\+state} \textbf{ vorbis\+\_\+dsp\+\_\+state}}
+
+\mbox{\label{codec_8h_a7dd4c2d03d96b7064d3188f3bafbe52a}} 
+\index{codec.h@{codec.h}!vorbis\_info@{vorbis\_info}}
+\index{vorbis\_info@{vorbis\_info}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_info}
+{\footnotesize\ttfamily typedef struct \textbf{ vorbis\+\_\+info} \textbf{ vorbis\+\_\+info}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\label{codec_8h_a3873974078caf99893e6268e5ce6d896}} 
+\index{codec.h@{codec.h}!vorbis\_analysis@{vorbis\_analysis}}
+\index{vorbis\_analysis@{vorbis\_analysis}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_analysis()}
+{\footnotesize\ttfamily int vorbis\+\_\+analysis (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+block} $\ast$}]{vb,  }\item[{ogg\+\_\+packet $\ast$}]{op }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a0c75b86b435cd45905ff62e2b9c93ab1}} 
+\index{codec.h@{codec.h}!vorbis\_analysis\_blockout@{vorbis\_analysis\_blockout}}
+\index{vorbis\_analysis\_blockout@{vorbis\_analysis\_blockout}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_analysis\_blockout()}
+{\footnotesize\ttfamily int vorbis\+\_\+analysis\+\_\+blockout (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$}]{v,  }\item[{\textbf{ vorbis\+\_\+block} $\ast$}]{vb }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a67a3c3499ca30d668a50794d9f3494a9}} 
+\index{codec.h@{codec.h}!vorbis\_analysis\_buffer@{vorbis\_analysis\_buffer}}
+\index{vorbis\_analysis\_buffer@{vorbis\_analysis\_buffer}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_analysis\_buffer()}
+{\footnotesize\ttfamily float $\ast$$\ast$ vorbis\+\_\+analysis\+\_\+buffer (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$}]{v,  }\item[{int}]{vals }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a76b877e3ab680d7537ec58ebd7fa990a}} 
+\index{codec.h@{codec.h}!vorbis\_analysis\_headerout@{vorbis\_analysis\_headerout}}
+\index{vorbis\_analysis\_headerout@{vorbis\_analysis\_headerout}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_analysis\_headerout()}
+{\footnotesize\ttfamily int vorbis\+\_\+analysis\+\_\+headerout (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$}]{v,  }\item[{\textbf{ vorbis\+\_\+comment} $\ast$}]{vc,  }\item[{ogg\+\_\+packet $\ast$}]{op,  }\item[{ogg\+\_\+packet $\ast$}]{op\+\_\+comm,  }\item[{ogg\+\_\+packet $\ast$}]{op\+\_\+code }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_abdcd5ee6f4e60c13505170a0f0ec752c}} 
+\index{codec.h@{codec.h}!vorbis\_analysis\_init@{vorbis\_analysis\_init}}
+\index{vorbis\_analysis\_init@{vorbis\_analysis\_init}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_analysis\_init()}
+{\footnotesize\ttfamily int vorbis\+\_\+analysis\+\_\+init (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$}]{v,  }\item[{\textbf{ vorbis\+\_\+info} $\ast$}]{vi }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_ae527e6764c45e6e8a23c60d777496adf}} 
+\index{codec.h@{codec.h}!vorbis\_analysis\_wrote@{vorbis\_analysis\_wrote}}
+\index{vorbis\_analysis\_wrote@{vorbis\_analysis\_wrote}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_analysis\_wrote()}
+{\footnotesize\ttfamily int vorbis\+\_\+analysis\+\_\+wrote (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$}]{v,  }\item[{int}]{vals }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a7efe5889f6919053b8ab8d69e61ac995}} 
+\index{codec.h@{codec.h}!vorbis\_bitrate\_addblock@{vorbis\_bitrate\_addblock}}
+\index{vorbis\_bitrate\_addblock@{vorbis\_bitrate\_addblock}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_bitrate\_addblock()}
+{\footnotesize\ttfamily int vorbis\+\_\+bitrate\+\_\+addblock (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+block} $\ast$}]{vb }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a37418540741db649a608cac3d2be440f}} 
+\index{codec.h@{codec.h}!vorbis\_bitrate\_flushpacket@{vorbis\_bitrate\_flushpacket}}
+\index{vorbis\_bitrate\_flushpacket@{vorbis\_bitrate\_flushpacket}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_bitrate\_flushpacket()}
+{\footnotesize\ttfamily int vorbis\+\_\+bitrate\+\_\+flushpacket (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$}]{vd,  }\item[{ogg\+\_\+packet $\ast$}]{op }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a6a89cd06e8119b22a2d6a565e2d92c4e}} 
+\index{codec.h@{codec.h}!vorbis\_block\_clear@{vorbis\_block\_clear}}
+\index{vorbis\_block\_clear@{vorbis\_block\_clear}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_block\_clear()}
+{\footnotesize\ttfamily int vorbis\+\_\+block\+\_\+clear (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+block} $\ast$}]{vb }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_ab6d85544ab746e98fc63308f6bed27a0}} 
+\index{codec.h@{codec.h}!vorbis\_block\_init@{vorbis\_block\_init}}
+\index{vorbis\_block\_init@{vorbis\_block\_init}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_block\_init()}
+{\footnotesize\ttfamily int vorbis\+\_\+block\+\_\+init (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$}]{v,  }\item[{\textbf{ vorbis\+\_\+block} $\ast$}]{vb }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a0f1108d97f1be4d4740c060f32d78bf5}} 
+\index{codec.h@{codec.h}!vorbis\_comment\_add@{vorbis\_comment\_add}}
+\index{vorbis\_comment\_add@{vorbis\_comment\_add}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_comment\_add()}
+{\footnotesize\ttfamily void vorbis\+\_\+comment\+\_\+add (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+comment} $\ast$}]{vc,  }\item[{const char $\ast$}]{comment }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a0d0b69d0f7018455ad15ff735a6403fb}} 
+\index{codec.h@{codec.h}!vorbis\_comment\_add\_tag@{vorbis\_comment\_add\_tag}}
+\index{vorbis\_comment\_add\_tag@{vorbis\_comment\_add\_tag}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_comment\_add\_tag()}
+{\footnotesize\ttfamily void vorbis\+\_\+comment\+\_\+add\+\_\+tag (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+comment} $\ast$}]{vc,  }\item[{const char $\ast$}]{tag,  }\item[{const char $\ast$}]{contents }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a2fd38dcf146b850e88f281978b580d3e}} 
+\index{codec.h@{codec.h}!vorbis\_comment\_clear@{vorbis\_comment\_clear}}
+\index{vorbis\_comment\_clear@{vorbis\_comment\_clear}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_comment\_clear()}
+{\footnotesize\ttfamily void vorbis\+\_\+comment\+\_\+clear (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+comment} $\ast$}]{vc }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a0bab2093941e2bb89651d62ca5997676}} 
+\index{codec.h@{codec.h}!vorbis\_comment\_init@{vorbis\_comment\_init}}
+\index{vorbis\_comment\_init@{vorbis\_comment\_init}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_comment\_init()}
+{\footnotesize\ttfamily void vorbis\+\_\+comment\+\_\+init (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+comment} $\ast$}]{vc }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a1e644513d72244730f91c7859633cef9}} 
+\index{codec.h@{codec.h}!vorbis\_comment\_query@{vorbis\_comment\_query}}
+\index{vorbis\_comment\_query@{vorbis\_comment\_query}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_comment\_query()}
+{\footnotesize\ttfamily char $\ast$ vorbis\+\_\+comment\+\_\+query (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+comment} $\ast$}]{vc,  }\item[{const char $\ast$}]{tag,  }\item[{int}]{count }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a2d2dca98f34a0fd124cd8f0dc3e243eb}} 
+\index{codec.h@{codec.h}!vorbis\_comment\_query\_count@{vorbis\_comment\_query\_count}}
+\index{vorbis\_comment\_query\_count@{vorbis\_comment\_query\_count}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_comment\_query\_count()}
+{\footnotesize\ttfamily int vorbis\+\_\+comment\+\_\+query\+\_\+count (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+comment} $\ast$}]{vc,  }\item[{const char $\ast$}]{tag }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_ac031289d0c9856508b5bff3ffb992246}} 
+\index{codec.h@{codec.h}!vorbis\_commentheader\_out@{vorbis\_commentheader\_out}}
+\index{vorbis\_commentheader\_out@{vorbis\_commentheader\_out}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_commentheader\_out()}
+{\footnotesize\ttfamily int vorbis\+\_\+commentheader\+\_\+out (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+comment} $\ast$}]{vc,  }\item[{ogg\+\_\+packet $\ast$}]{op }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a3af19007415290a3f237e9a821bfe616}} 
+\index{codec.h@{codec.h}!vorbis\_dsp\_clear@{vorbis\_dsp\_clear}}
+\index{vorbis\_dsp\_clear@{vorbis\_dsp\_clear}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_dsp\_clear()}
+{\footnotesize\ttfamily void vorbis\+\_\+dsp\+\_\+clear (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$}]{v }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a33bdf9020eff4b7aebf05f206312b6d0}} 
+\index{codec.h@{codec.h}!vorbis\_granule\_time@{vorbis\_granule\_time}}
+\index{vorbis\_granule\_time@{vorbis\_granule\_time}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_granule\_time()}
+{\footnotesize\ttfamily double vorbis\+\_\+granule\+\_\+time (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$}]{v,  }\item[{ogg\+\_\+int64\+\_\+t}]{granulepos }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_acb7d9b60b9c9f057e1bed14c76810ae5}} 
+\index{codec.h@{codec.h}!vorbis\_info\_blocksize@{vorbis\_info\_blocksize}}
+\index{vorbis\_info\_blocksize@{vorbis\_info\_blocksize}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_info\_blocksize()}
+{\footnotesize\ttfamily int vorbis\+\_\+info\+\_\+blocksize (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+info} $\ast$}]{vi,  }\item[{int}]{zo }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_abaf171c1341b23e1c2eed7dab00d9f4a}} 
+\index{codec.h@{codec.h}!vorbis\_info\_clear@{vorbis\_info\_clear}}
+\index{vorbis\_info\_clear@{vorbis\_info\_clear}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_info\_clear()}
+{\footnotesize\ttfamily void vorbis\+\_\+info\+\_\+clear (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+info} $\ast$}]{vi }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_af0ed4e74fe68802c7d337a2645e759d6}} 
+\index{codec.h@{codec.h}!vorbis\_info\_init@{vorbis\_info\_init}}
+\index{vorbis\_info\_init@{vorbis\_info\_init}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_info\_init()}
+{\footnotesize\ttfamily void vorbis\+\_\+info\+\_\+init (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+info} $\ast$}]{vi }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a5868aa9f561feefb7f613e9fa42967b8}} 
+\index{codec.h@{codec.h}!vorbis\_packet\_blocksize@{vorbis\_packet\_blocksize}}
+\index{vorbis\_packet\_blocksize@{vorbis\_packet\_blocksize}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_packet\_blocksize()}
+{\footnotesize\ttfamily long vorbis\+\_\+packet\+\_\+blocksize (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+info} $\ast$}]{vi,  }\item[{ogg\+\_\+packet $\ast$}]{op }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_ad74ed4c29400ef6d23b14846c8c4ccb4}} 
+\index{codec.h@{codec.h}!vorbis\_synthesis@{vorbis\_synthesis}}
+\index{vorbis\_synthesis@{vorbis\_synthesis}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_synthesis()}
+{\footnotesize\ttfamily int vorbis\+\_\+synthesis (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+block} $\ast$}]{vb,  }\item[{ogg\+\_\+packet $\ast$}]{op }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_acbcda429474c093c54fd9e2ffaee2547}} 
+\index{codec.h@{codec.h}!vorbis\_synthesis\_blockin@{vorbis\_synthesis\_blockin}}
+\index{vorbis\_synthesis\_blockin@{vorbis\_synthesis\_blockin}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_synthesis\_blockin()}
+{\footnotesize\ttfamily int vorbis\+\_\+synthesis\+\_\+blockin (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$}]{v,  }\item[{\textbf{ vorbis\+\_\+block} $\ast$}]{vb }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a336af3b4f1fc15f9807351341ed87b13}} 
+\index{codec.h@{codec.h}!vorbis\_synthesis\_halfrate@{vorbis\_synthesis\_halfrate}}
+\index{vorbis\_synthesis\_halfrate@{vorbis\_synthesis\_halfrate}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_synthesis\_halfrate()}
+{\footnotesize\ttfamily int vorbis\+\_\+synthesis\+\_\+halfrate (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+info} $\ast$}]{v,  }\item[{int}]{flag }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_abd73dee048684f915c30fc04e8e8d331}} 
+\index{codec.h@{codec.h}!vorbis\_synthesis\_halfrate\_p@{vorbis\_synthesis\_halfrate\_p}}
+\index{vorbis\_synthesis\_halfrate\_p@{vorbis\_synthesis\_halfrate\_p}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_synthesis\_halfrate\_p()}
+{\footnotesize\ttfamily int vorbis\+\_\+synthesis\+\_\+halfrate\+\_\+p (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+info} $\ast$}]{v }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_af1192fabbd28f89d048de1b381463219}} 
+\index{codec.h@{codec.h}!vorbis\_synthesis\_headerin@{vorbis\_synthesis\_headerin}}
+\index{vorbis\_synthesis\_headerin@{vorbis\_synthesis\_headerin}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_synthesis\_headerin()}
+{\footnotesize\ttfamily int vorbis\+\_\+synthesis\+\_\+headerin (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+info} $\ast$}]{vi,  }\item[{\textbf{ vorbis\+\_\+comment} $\ast$}]{vc,  }\item[{ogg\+\_\+packet $\ast$}]{op }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_aded021367258095562dae4d0e150dd8a}} 
+\index{codec.h@{codec.h}!vorbis\_synthesis\_idheader@{vorbis\_synthesis\_idheader}}
+\index{vorbis\_synthesis\_idheader@{vorbis\_synthesis\_idheader}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_synthesis\_idheader()}
+{\footnotesize\ttfamily int vorbis\+\_\+synthesis\+\_\+idheader (\begin{DoxyParamCaption}\item[{ogg\+\_\+packet $\ast$}]{op }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a44bb00553295f2a9088e169cf4a3eb07}} 
+\index{codec.h@{codec.h}!vorbis\_synthesis\_init@{vorbis\_synthesis\_init}}
+\index{vorbis\_synthesis\_init@{vorbis\_synthesis\_init}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_synthesis\_init()}
+{\footnotesize\ttfamily int vorbis\+\_\+synthesis\+\_\+init (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$}]{v,  }\item[{\textbf{ vorbis\+\_\+info} $\ast$}]{vi }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a4e65e4bba683ae5bd185e2fcc24b3d94}} 
+\index{codec.h@{codec.h}!vorbis\_synthesis\_lapout@{vorbis\_synthesis\_lapout}}
+\index{vorbis\_synthesis\_lapout@{vorbis\_synthesis\_lapout}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_synthesis\_lapout()}
+{\footnotesize\ttfamily int vorbis\+\_\+synthesis\+\_\+lapout (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$}]{v,  }\item[{float $\ast$$\ast$$\ast$}]{pcm }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_ac8d21b854dbcb022dab0b46521e9de31}} 
+\index{codec.h@{codec.h}!vorbis\_synthesis\_pcmout@{vorbis\_synthesis\_pcmout}}
+\index{vorbis\_synthesis\_pcmout@{vorbis\_synthesis\_pcmout}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_synthesis\_pcmout()}
+{\footnotesize\ttfamily int vorbis\+\_\+synthesis\+\_\+pcmout (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$}]{v,  }\item[{float $\ast$$\ast$$\ast$}]{pcm }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a81b9782f945ca76509f79cdf5777b4cb}} 
+\index{codec.h@{codec.h}!vorbis\_synthesis\_read@{vorbis\_synthesis\_read}}
+\index{vorbis\_synthesis\_read@{vorbis\_synthesis\_read}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_synthesis\_read()}
+{\footnotesize\ttfamily int vorbis\+\_\+synthesis\+\_\+read (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$}]{v,  }\item[{int}]{samples }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_ad650e1f6753a2644d735f605164c40f3}} 
+\index{codec.h@{codec.h}!vorbis\_synthesis\_restart@{vorbis\_synthesis\_restart}}
+\index{vorbis\_synthesis\_restart@{vorbis\_synthesis\_restart}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_synthesis\_restart()}
+{\footnotesize\ttfamily int vorbis\+\_\+synthesis\+\_\+restart (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$}]{v }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_a378e222706bd42aa1fa30924311bfa07}} 
+\index{codec.h@{codec.h}!vorbis\_synthesis\_trackonly@{vorbis\_synthesis\_trackonly}}
+\index{vorbis\_synthesis\_trackonly@{vorbis\_synthesis\_trackonly}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_synthesis\_trackonly()}
+{\footnotesize\ttfamily int vorbis\+\_\+synthesis\+\_\+trackonly (\begin{DoxyParamCaption}\item[{\textbf{ vorbis\+\_\+block} $\ast$}]{vb,  }\item[{ogg\+\_\+packet $\ast$}]{op }\end{DoxyParamCaption})}
+
+\mbox{\label{codec_8h_aa83766adc4fa30bc84e8caf90e3dac16}} 
+\index{codec.h@{codec.h}!vorbis\_version\_string@{vorbis\_version\_string}}
+\index{vorbis\_version\_string@{vorbis\_version\_string}!codec.h@{codec.h}}
+\doxysubsubsection{vorbis\_version\_string()}
+{\footnotesize\ttfamily const char $\ast$ vorbis\+\_\+version\+\_\+string (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+

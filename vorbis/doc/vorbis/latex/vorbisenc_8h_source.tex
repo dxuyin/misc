@@ -1,0 +1,117 @@
+\doxysection{vorbisenc.\+h}
+\label{vorbisenc_8h_source}\index{vorbisenc.h@{vorbisenc.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/********************************************************************}}
+\DoxyCodeLine{2 \textcolor{comment}{ *                                                                  *}}
+\DoxyCodeLine{3 \textcolor{comment}{ * THIS FILE IS PART OF THE OggVorbis SOFTWARE CODEC SOURCE CODE.   *}}
+\DoxyCodeLine{4 \textcolor{comment}{ * USE, DISTRIBUTION AND REPRODUCTION OF THIS LIBRARY SOURCE IS     *}}
+\DoxyCodeLine{5 \textcolor{comment}{ * GOVERNED BY A BSD-\/STYLE SOURCE LICENSE INCLUDED WITH THIS SOURCE *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * IN 'COPYING'. PLEASE READ THESE TERMS BEFORE DISTRIBUTING.       *}}
+\DoxyCodeLine{7 \textcolor{comment}{ *                                                                  *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * THE OggVorbis SOURCE CODE IS (C) COPYRIGHT 1994-\/2001             *}}
+\DoxyCodeLine{9 \textcolor{comment}{ * by the Xiph.Org Foundation https://xiph.org/                     *}}
+\DoxyCodeLine{10 \textcolor{comment}{ *                                                                  *}}
+\DoxyCodeLine{11 \textcolor{comment}{ ********************************************************************}}
+\DoxyCodeLine{12 \textcolor{comment}{}}
+\DoxyCodeLine{13 \textcolor{comment}{ function: vorbis encode-\/engine setup}}
+\DoxyCodeLine{14 \textcolor{comment}{}}
+\DoxyCodeLine{15 \textcolor{comment}{ ********************************************************************/}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#ifndef \_OV\_ENC\_H\_}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define \_OV\_ENC\_H\_}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{27 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{28 \{}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* \_\_cplusplus */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include "{}codec.h"{}}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{59 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} vorbis\_encode\_init(vorbis\_info *vi,}
+\DoxyCodeLine{60                               \textcolor{keywordtype}{long} channels,}
+\DoxyCodeLine{61                               \textcolor{keywordtype}{long} rate,}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63                               \textcolor{keywordtype}{long} max\_bitrate,}
+\DoxyCodeLine{64                               \textcolor{keywordtype}{long} nominal\_bitrate,}
+\DoxyCodeLine{65                               \textcolor{keywordtype}{long} min\_bitrate);}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{96 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} vorbis\_encode\_setup\_managed(vorbis\_info *vi,}
+\DoxyCodeLine{97                                        \textcolor{keywordtype}{long} channels,}
+\DoxyCodeLine{98                                        \textcolor{keywordtype}{long} rate,}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100                                        \textcolor{keywordtype}{long} max\_bitrate,}
+\DoxyCodeLine{101                                        \textcolor{keywordtype}{long} nominal\_bitrate,}
+\DoxyCodeLine{102                                        \textcolor{keywordtype}{long} min\_bitrate);}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{128 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} vorbis\_encode\_setup\_vbr(vorbis\_info *vi,}
+\DoxyCodeLine{129                                   \textcolor{keywordtype}{long} channels,}
+\DoxyCodeLine{130                                   \textcolor{keywordtype}{long} rate,}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132                                   \textcolor{keywordtype}{float} quality}
+\DoxyCodeLine{133                                   );}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{157 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} vorbis\_encode\_init\_vbr(vorbis\_info *vi,}
+\DoxyCodeLine{158                                   \textcolor{keywordtype}{long} channels,}
+\DoxyCodeLine{159                                   \textcolor{keywordtype}{long} rate,}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161                                   \textcolor{keywordtype}{float} base\_quality}
+\DoxyCodeLine{162                                   );}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{191 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} vorbis\_encode\_setup\_init(vorbis\_info *vi);}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{219 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} vorbis\_encode\_ctl(vorbis\_info *vi,\textcolor{keywordtype}{int} number,\textcolor{keywordtype}{void} *arg);}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{232 \textcolor{keyword}{struct }ovectl\_ratemanage\_arg \{}
+\DoxyCodeLine{233   \textcolor{keywordtype}{int}    management\_active; }
+\DoxyCodeLine{236   \textcolor{keywordtype}{long}   bitrate\_hard\_min;}
+\DoxyCodeLine{239   \textcolor{keywordtype}{long}   bitrate\_hard\_max;}
+\DoxyCodeLine{242   \textcolor{keywordtype}{double} bitrate\_hard\_window;}
+\DoxyCodeLine{245   \textcolor{keywordtype}{long}   bitrate\_av\_lo;}
+\DoxyCodeLine{248   \textcolor{keywordtype}{long}   bitrate\_av\_hi;}
+\DoxyCodeLine{251   \textcolor{keywordtype}{double} bitrate\_av\_window;}
+\DoxyCodeLine{257   \textcolor{keywordtype}{double} bitrate\_av\_window\_center;}
+\DoxyCodeLine{258 \};}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{269 \textcolor{keyword}{struct }ovectl\_ratemanage2\_arg \{}
+\DoxyCodeLine{270   \textcolor{keywordtype}{int}    management\_active; }
+\DoxyCodeLine{272   \textcolor{keywordtype}{long}   bitrate\_limit\_min\_kbps;}
+\DoxyCodeLine{274   \textcolor{keywordtype}{long}   bitrate\_limit\_max\_kbps;}
+\DoxyCodeLine{275   \textcolor{keywordtype}{long}   bitrate\_limit\_reservoir\_bits; }
+\DoxyCodeLine{281   \textcolor{keywordtype}{double} bitrate\_limit\_reservoir\_bias;}
+\DoxyCodeLine{283   \textcolor{keywordtype}{long}   bitrate\_average\_kbps;}
+\DoxyCodeLine{288   \textcolor{keywordtype}{double} bitrate\_average\_damping;}
+\DoxyCodeLine{289 \};}
+\DoxyCodeLine{290 }
+\DoxyCodeLine{291 }
+\DoxyCodeLine{302 }
+\DoxyCodeLine{312 \textcolor{preprocessor}{\#define OV\_ECTL\_RATEMANAGE2\_GET      0x14}}
+\DoxyCodeLine{313 }
+\DoxyCodeLine{323 \textcolor{preprocessor}{\#define OV\_ECTL\_RATEMANAGE2\_SET      0x15}}
+\DoxyCodeLine{324 }
+\DoxyCodeLine{331 \textcolor{preprocessor}{\#define OV\_ECTL\_LOWPASS\_GET          0x20}}
+\DoxyCodeLine{332 }
+\DoxyCodeLine{339 \textcolor{preprocessor}{\#define OV\_ECTL\_LOWPASS\_SET          0x21}}
+\DoxyCodeLine{340 }
+\DoxyCodeLine{347 \textcolor{preprocessor}{\#define OV\_ECTL\_IBLOCK\_GET           0x30}}
+\DoxyCodeLine{348 }
+\DoxyCodeLine{358 \textcolor{preprocessor}{\#define OV\_ECTL\_IBLOCK\_SET           0x31}}
+\DoxyCodeLine{359 }
+\DoxyCodeLine{366 \textcolor{preprocessor}{\#define OV\_ECTL\_COUPLING\_GET         0x40}}
+\DoxyCodeLine{367 }
+\DoxyCodeLine{378 \textcolor{preprocessor}{\#define OV\_ECTL\_COUPLING\_SET         0x41}}
+\DoxyCodeLine{379 }
+\DoxyCodeLine{380   \textcolor{comment}{/* deprecated rate management supported only for compatibility */}}
+\DoxyCodeLine{381 }
+\DoxyCodeLine{392 \textcolor{preprocessor}{\#define OV\_ECTL\_RATEMANAGE\_GET       0x10}}
+\DoxyCodeLine{403 \textcolor{preprocessor}{\#define OV\_ECTL\_RATEMANAGE\_SET       0x11}}
+\DoxyCodeLine{414 \textcolor{preprocessor}{\#define OV\_ECTL\_RATEMANAGE\_AVG       0x12}}
+\DoxyCodeLine{425 \textcolor{preprocessor}{\#define OV\_ECTL\_RATEMANAGE\_HARD      0x13}}
+\DoxyCodeLine{426 }
+\DoxyCodeLine{431 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{432 \}}
+\DoxyCodeLine{433 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* \_\_cplusplus */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{434 }
+\DoxyCodeLine{435 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,211 @@
+\doxysection{vorbisfile.\+h}
+\label{vorbisfile_8h_source}\index{vorbisfile.h@{vorbisfile.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/********************************************************************}}
+\DoxyCodeLine{2 \textcolor{comment}{ *                                                                  *}}
+\DoxyCodeLine{3 \textcolor{comment}{ * THIS FILE IS PART OF THE OggVorbis SOFTWARE CODEC SOURCE CODE.   *}}
+\DoxyCodeLine{4 \textcolor{comment}{ * USE, DISTRIBUTION AND REPRODUCTION OF THIS LIBRARY SOURCE IS     *}}
+\DoxyCodeLine{5 \textcolor{comment}{ * GOVERNED BY A BSD-\/STYLE SOURCE LICENSE INCLUDED WITH THIS SOURCE *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * IN 'COPYING'. PLEASE READ THESE TERMS BEFORE DISTRIBUTING.       *}}
+\DoxyCodeLine{7 \textcolor{comment}{ *                                                                  *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * THE OggVorbis SOURCE CODE IS (C) COPYRIGHT 1994-\/2007             *}}
+\DoxyCodeLine{9 \textcolor{comment}{ * by the Xiph.Org Foundation https://xiph.org/                     *}}
+\DoxyCodeLine{10 \textcolor{comment}{ *                                                                  *}}
+\DoxyCodeLine{11 \textcolor{comment}{ ********************************************************************}}
+\DoxyCodeLine{12 \textcolor{comment}{}}
+\DoxyCodeLine{13 \textcolor{comment}{ function: stdio-\/based convenience library for opening/seeking/decoding}}
+\DoxyCodeLine{14 \textcolor{comment}{}}
+\DoxyCodeLine{15 \textcolor{comment}{ ********************************************************************/}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#ifndef \_OV\_FILE\_H\_}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define \_OV\_FILE\_H\_}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{21 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* \_\_cplusplus */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include "{}codec.h"{}}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{comment}{/* The function prototypes for the callbacks are basically the same as for}}
+\DoxyCodeLine{29 \textcolor{comment}{ * the stdio functions fread, fseek, fclose, ftell.}}
+\DoxyCodeLine{30 \textcolor{comment}{ * The one difference is that the FILE * arguments have been replaced with}}
+\DoxyCodeLine{31 \textcolor{comment}{ * a void * -\/ this is to be used as a pointer to whatever internal data these}}
+\DoxyCodeLine{32 \textcolor{comment}{ * functions might need. In the stdio case, it's just a FILE * cast to a void *}}
+\DoxyCodeLine{33 \textcolor{comment}{ *}}
+\DoxyCodeLine{34 \textcolor{comment}{ * If you use other functions, check the docs for these functions and return}}
+\DoxyCodeLine{35 \textcolor{comment}{ * the right values. For seek\_func(), you *MUST* return -\/1 if the stream is}}
+\DoxyCodeLine{36 \textcolor{comment}{ * unseekable}}
+\DoxyCodeLine{37 \textcolor{comment}{ */}}
+\DoxyCodeLine{38 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{39   size\_t (*read\_func)  (\textcolor{keywordtype}{void} *ptr, \textcolor{keywordtype}{size\_t} size, \textcolor{keywordtype}{size\_t} nmemb, \textcolor{keywordtype}{void} *datasource);}
+\DoxyCodeLine{40   int    (*seek\_func)  (\textcolor{keywordtype}{void} *datasource, ogg\_int64\_t offset, \textcolor{keywordtype}{int} whence);}
+\DoxyCodeLine{41   int    (*close\_func) (\textcolor{keywordtype}{void} *datasource);}
+\DoxyCodeLine{42   long   (*tell\_func)  (\textcolor{keywordtype}{void} *datasource);}
+\DoxyCodeLine{43 \} ov\_callbacks;}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#ifndef OV\_EXCLUDE\_STATIC\_CALLBACKS}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{comment}{/* a few sets of convenient callbacks, especially for use under}}
+\DoxyCodeLine{48 \textcolor{comment}{ * Windows where ov\_open\_callbacks() should always be used instead of}}
+\DoxyCodeLine{49 \textcolor{comment}{ * ov\_open() to avoid problems with incompatible crt.o version linking}}
+\DoxyCodeLine{50 \textcolor{comment}{ * issues. */}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{keyword}{static} \textcolor{keywordtype}{int} \_ov\_header\_fseek\_wrap(FILE *f,ogg\_int64\_t off,\textcolor{keywordtype}{int} whence)\{}
+\DoxyCodeLine{53   \textcolor{keywordflow}{if}(f==NULL)\textcolor{keywordflow}{return}(-\/1);}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#ifdef \_\_MINGW32\_\_}}
+\DoxyCodeLine{56   \textcolor{keywordflow}{return} fseeko64(f,off,whence);}
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#elif defined (\_WIN32)}}
+\DoxyCodeLine{58   \textcolor{keywordflow}{return} \_fseeki64(f,off,whence);}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{60   \textcolor{keywordflow}{return} fseek(f,off,whence);}
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{62 \}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{comment}{/* These structs below (OV\_CALLBACKS\_DEFAULT etc) are defined here as}}
+\DoxyCodeLine{65 \textcolor{comment}{ * static data. That means that every file which includes this header}}
+\DoxyCodeLine{66 \textcolor{comment}{ * will get its own copy of these structs whether it uses them or}}
+\DoxyCodeLine{67 \textcolor{comment}{ * not unless it \#defines OV\_EXCLUDE\_STATIC\_CALLBACKS.}}
+\DoxyCodeLine{68 \textcolor{comment}{ * These static symbols are essential on platforms such as Windows on}}
+\DoxyCodeLine{69 \textcolor{comment}{ * which several different versions of stdio support may be linked to}}
+\DoxyCodeLine{70 \textcolor{comment}{ * by different DLLs, and we need to be certain we know which one}}
+\DoxyCodeLine{71 \textcolor{comment}{ * we're using (the same one as the main application).}}
+\DoxyCodeLine{72 \textcolor{comment}{ */}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 \textcolor{keyword}{static} ov\_callbacks OV\_CALLBACKS\_DEFAULT = \{}
+\DoxyCodeLine{75   (size\_t (*)(\textcolor{keywordtype}{void} *, size\_t, size\_t, \textcolor{keywordtype}{void} *))  fread,}
+\DoxyCodeLine{76   (int (*)(\textcolor{keywordtype}{void} *, ogg\_int64\_t, int))           \_ov\_header\_fseek\_wrap,}
+\DoxyCodeLine{77   (\textcolor{keywordtype}{int} (*)(\textcolor{keywordtype}{void} *))                             fclose,}
+\DoxyCodeLine{78   (\textcolor{keywordtype}{long} (*)(\textcolor{keywordtype}{void} *))                            ftell}
+\DoxyCodeLine{79 \};}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 static ov\_callbacks OV\_CALLBACKS\_NOCLOSE = \{}
+\DoxyCodeLine{82   (size\_t (*)(\textcolor{keywordtype}{void} *, size\_t, size\_t, \textcolor{keywordtype}{void} *))  fread,}
+\DoxyCodeLine{83   (int (*)(\textcolor{keywordtype}{void} *, ogg\_int64\_t, int))           \_ov\_header\_fseek\_wrap,}
+\DoxyCodeLine{84   (\textcolor{keywordtype}{int} (*)(\textcolor{keywordtype}{void} *))                             NULL,}
+\DoxyCodeLine{85   (\textcolor{keywordtype}{long} (*)(\textcolor{keywordtype}{void} *))                            ftell}
+\DoxyCodeLine{86 \};}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 static ov\_callbacks OV\_CALLBACKS\_STREAMONLY = \{}
+\DoxyCodeLine{89   (size\_t (*)(\textcolor{keywordtype}{void} *, size\_t, size\_t, \textcolor{keywordtype}{void} *))  fread,}
+\DoxyCodeLine{90   (int (*)(\textcolor{keywordtype}{void} *, ogg\_int64\_t, int))           NULL,}
+\DoxyCodeLine{91   (\textcolor{keywordtype}{int} (*)(\textcolor{keywordtype}{void} *))                             fclose,}
+\DoxyCodeLine{92   (\textcolor{keywordtype}{long} (*)(\textcolor{keywordtype}{void} *))                            NULL}
+\DoxyCodeLine{93 \};}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 static ov\_callbacks OV\_CALLBACKS\_STREAMONLY\_NOCLOSE = \{}
+\DoxyCodeLine{96   (size\_t (*)(\textcolor{keywordtype}{void} *, size\_t, size\_t, \textcolor{keywordtype}{void} *))  fread,}
+\DoxyCodeLine{97   (int (*)(\textcolor{keywordtype}{void} *, ogg\_int64\_t, int))           NULL,}
+\DoxyCodeLine{98   (\textcolor{keywordtype}{int} (*)(\textcolor{keywordtype}{void} *))                             NULL,}
+\DoxyCodeLine{99   (\textcolor{keywordtype}{long} (*)(\textcolor{keywordtype}{void} *))                            NULL}
+\DoxyCodeLine{100 \};}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104 \textcolor{preprocessor}{\#define  NOTOPEN   0}}
+\DoxyCodeLine{105 \textcolor{preprocessor}{\#define  PARTOPEN  1}}
+\DoxyCodeLine{106 \textcolor{preprocessor}{\#define  OPENED    2}}
+\DoxyCodeLine{107 \textcolor{preprocessor}{\#define  STREAMSET 3}}
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#define  INITSET   4}}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }OggVorbis\_File \{}
+\DoxyCodeLine{111   \textcolor{keywordtype}{void}            *datasource; \textcolor{comment}{/* Pointer to a FILE *, etc. */}}
+\DoxyCodeLine{112   \textcolor{keywordtype}{int}              seekable;}
+\DoxyCodeLine{113   ogg\_int64\_t      offset;}
+\DoxyCodeLine{114   ogg\_int64\_t      end;}
+\DoxyCodeLine{115   ogg\_sync\_state   oy;}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117   \textcolor{comment}{/* If the FILE handle isn't seekable (eg, a pipe), only the current}}
+\DoxyCodeLine{118 \textcolor{comment}{     stream appears */}}
+\DoxyCodeLine{119   \textcolor{keywordtype}{int}              links;}
+\DoxyCodeLine{120   ogg\_int64\_t     *offsets;}
+\DoxyCodeLine{121   ogg\_int64\_t     *dataoffsets;}
+\DoxyCodeLine{122   \textcolor{keywordtype}{long}            *serialnos;}
+\DoxyCodeLine{123   ogg\_int64\_t     *pcmlengths; \textcolor{comment}{/* overloaded to maintain binary}}
+\DoxyCodeLine{124 \textcolor{comment}{                                  compatibility; x2 size, stores both}}
+\DoxyCodeLine{125 \textcolor{comment}{                                  beginning and end values */}}
+\DoxyCodeLine{126   vorbis\_info     *vi;}
+\DoxyCodeLine{127   vorbis\_comment  *vc;}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129   \textcolor{comment}{/* Decoding working state local storage */}}
+\DoxyCodeLine{130   ogg\_int64\_t      pcm\_offset;}
+\DoxyCodeLine{131   \textcolor{keywordtype}{int}              ready\_state;}
+\DoxyCodeLine{132   \textcolor{keywordtype}{long}             current\_serialno;}
+\DoxyCodeLine{133   \textcolor{keywordtype}{int}              current\_link;}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135   \textcolor{keywordtype}{double}           bittrack;}
+\DoxyCodeLine{136   \textcolor{keywordtype}{double}           samptrack;}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138   ogg\_stream\_state os; \textcolor{comment}{/* take physical pages, weld into a logical}}
+\DoxyCodeLine{139 \textcolor{comment}{                          stream of packets */}}
+\DoxyCodeLine{140   vorbis\_dsp\_state vd; \textcolor{comment}{/* central working state for the packet-\/>PCM decoder */}}
+\DoxyCodeLine{141   vorbis\_block     vb; \textcolor{comment}{/* local working space for packet-\/>PCM decode */}}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143   ov\_callbacks callbacks;}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145 \} OggVorbis\_File;}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_clear(OggVorbis\_File *vf);}
+\DoxyCodeLine{149 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_fopen(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *path,OggVorbis\_File *vf);}
+\DoxyCodeLine{150 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_open(FILE *f,OggVorbis\_File *vf,\textcolor{keyword}{const} \textcolor{keywordtype}{char} *initial,\textcolor{keywordtype}{long} ibytes);}
+\DoxyCodeLine{151 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_open\_callbacks(\textcolor{keywordtype}{void} *datasource, OggVorbis\_File *vf,}
+\DoxyCodeLine{152                 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *initial, \textcolor{keywordtype}{long} ibytes, ov\_callbacks callbacks);}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_test(FILE *f,OggVorbis\_File *vf,\textcolor{keyword}{const} \textcolor{keywordtype}{char} *initial,\textcolor{keywordtype}{long} ibytes);}
+\DoxyCodeLine{155 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_test\_callbacks(\textcolor{keywordtype}{void} *datasource, OggVorbis\_File *vf,}
+\DoxyCodeLine{156                 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *initial, \textcolor{keywordtype}{long} ibytes, ov\_callbacks callbacks);}
+\DoxyCodeLine{157 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_test\_open(OggVorbis\_File *vf);}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159 \textcolor{keyword}{extern} \textcolor{keywordtype}{long} ov\_bitrate(OggVorbis\_File *vf,\textcolor{keywordtype}{int} i);}
+\DoxyCodeLine{160 \textcolor{keyword}{extern} \textcolor{keywordtype}{long} ov\_bitrate\_instant(OggVorbis\_File *vf);}
+\DoxyCodeLine{161 \textcolor{keyword}{extern} \textcolor{keywordtype}{long} ov\_streams(OggVorbis\_File *vf);}
+\DoxyCodeLine{162 \textcolor{keyword}{extern} \textcolor{keywordtype}{long} ov\_seekable(OggVorbis\_File *vf);}
+\DoxyCodeLine{163 \textcolor{keyword}{extern} \textcolor{keywordtype}{long} ov\_serialnumber(OggVorbis\_File *vf,\textcolor{keywordtype}{int} i);}
+\DoxyCodeLine{164 }
+\DoxyCodeLine{165 \textcolor{keyword}{extern} ogg\_int64\_t ov\_raw\_total(OggVorbis\_File *vf,\textcolor{keywordtype}{int} i);}
+\DoxyCodeLine{166 \textcolor{keyword}{extern} ogg\_int64\_t ov\_pcm\_total(OggVorbis\_File *vf,\textcolor{keywordtype}{int} i);}
+\DoxyCodeLine{167 \textcolor{keyword}{extern} \textcolor{keywordtype}{double} ov\_time\_total(OggVorbis\_File *vf,\textcolor{keywordtype}{int} i);}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_raw\_seek(OggVorbis\_File *vf,ogg\_int64\_t pos);}
+\DoxyCodeLine{170 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_pcm\_seek(OggVorbis\_File *vf,ogg\_int64\_t pos);}
+\DoxyCodeLine{171 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_pcm\_seek\_page(OggVorbis\_File *vf,ogg\_int64\_t pos);}
+\DoxyCodeLine{172 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_time\_seek(OggVorbis\_File *vf,\textcolor{keywordtype}{double} pos);}
+\DoxyCodeLine{173 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_time\_seek\_page(OggVorbis\_File *vf,\textcolor{keywordtype}{double} pos);}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_raw\_seek\_lap(OggVorbis\_File *vf,ogg\_int64\_t pos);}
+\DoxyCodeLine{176 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_pcm\_seek\_lap(OggVorbis\_File *vf,ogg\_int64\_t pos);}
+\DoxyCodeLine{177 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_pcm\_seek\_page\_lap(OggVorbis\_File *vf,ogg\_int64\_t pos);}
+\DoxyCodeLine{178 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_time\_seek\_lap(OggVorbis\_File *vf,\textcolor{keywordtype}{double} pos);}
+\DoxyCodeLine{179 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_time\_seek\_page\_lap(OggVorbis\_File *vf,\textcolor{keywordtype}{double} pos);}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181 \textcolor{keyword}{extern} ogg\_int64\_t ov\_raw\_tell(OggVorbis\_File *vf);}
+\DoxyCodeLine{182 \textcolor{keyword}{extern} ogg\_int64\_t ov\_pcm\_tell(OggVorbis\_File *vf);}
+\DoxyCodeLine{183 \textcolor{keyword}{extern} \textcolor{keywordtype}{double} ov\_time\_tell(OggVorbis\_File *vf);}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{185 \textcolor{keyword}{extern} vorbis\_info *ov\_info(OggVorbis\_File *vf,\textcolor{keywordtype}{int} link);}
+\DoxyCodeLine{186 \textcolor{keyword}{extern} vorbis\_comment *ov\_comment(OggVorbis\_File *vf,\textcolor{keywordtype}{int} link);}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188 \textcolor{keyword}{extern} \textcolor{keywordtype}{long} ov\_read\_float(OggVorbis\_File *vf,\textcolor{keywordtype}{float} ***pcm\_channels,\textcolor{keywordtype}{int} samples,}
+\DoxyCodeLine{189                           \textcolor{keywordtype}{int} *bitstream);}
+\DoxyCodeLine{190 \textcolor{keyword}{extern} \textcolor{keywordtype}{long} ov\_read\_filter(OggVorbis\_File *vf,\textcolor{keywordtype}{char} *buffer,\textcolor{keywordtype}{int} length,}
+\DoxyCodeLine{191                           \textcolor{keywordtype}{int} bigendianp,\textcolor{keywordtype}{int} word,\textcolor{keywordtype}{int} sgned,\textcolor{keywordtype}{int} *bitstream,}
+\DoxyCodeLine{192                           \textcolor{keywordtype}{void} (*filter)(\textcolor{keywordtype}{float} **pcm,\textcolor{keywordtype}{long} channels,\textcolor{keywordtype}{long} samples,\textcolor{keywordtype}{void} *filter\_param),\textcolor{keywordtype}{void} *filter\_param);}
+\DoxyCodeLine{193 \textcolor{keyword}{extern} \textcolor{keywordtype}{long} ov\_read(OggVorbis\_File *vf,\textcolor{keywordtype}{char} *buffer,\textcolor{keywordtype}{int} length,}
+\DoxyCodeLine{194                     \textcolor{keywordtype}{int} bigendianp,\textcolor{keywordtype}{int} word,\textcolor{keywordtype}{int} sgned,\textcolor{keywordtype}{int} *bitstream);}
+\DoxyCodeLine{195 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_crosslap(OggVorbis\_File *vf1,OggVorbis\_File *vf2);}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_halfrate(OggVorbis\_File *vf,\textcolor{keywordtype}{int} flag);}
+\DoxyCodeLine{198 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} ov\_halfrate\_p(OggVorbis\_File *vf);}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{201 \}}
+\DoxyCodeLine{202 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* \_\_cplusplus */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{205 }
+
+\end{DoxyCode}

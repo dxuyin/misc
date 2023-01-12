@@ -1,0 +1,248 @@
+\doxysection{codec.\+h}
+\label{codec_8h_source}\index{codec.h@{codec.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/********************************************************************}}
+\DoxyCodeLine{2 \textcolor{comment}{ *                                                                  *}}
+\DoxyCodeLine{3 \textcolor{comment}{ * THIS FILE IS PART OF THE OggVorbis SOFTWARE CODEC SOURCE CODE.   *}}
+\DoxyCodeLine{4 \textcolor{comment}{ * USE, DISTRIBUTION AND REPRODUCTION OF THIS LIBRARY SOURCE IS     *}}
+\DoxyCodeLine{5 \textcolor{comment}{ * GOVERNED BY A BSD-\/STYLE SOURCE LICENSE INCLUDED WITH THIS SOURCE *}}
+\DoxyCodeLine{6 \textcolor{comment}{ * IN 'COPYING'. PLEASE READ THESE TERMS BEFORE DISTRIBUTING.       *}}
+\DoxyCodeLine{7 \textcolor{comment}{ *                                                                  *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * THE OggVorbis SOURCE CODE IS (C) COPYRIGHT 1994-\/2001             *}}
+\DoxyCodeLine{9 \textcolor{comment}{ * by the Xiph.Org Foundation https://xiph.org/                     *}}
+\DoxyCodeLine{10 \textcolor{comment}{}}
+\DoxyCodeLine{11 \textcolor{comment}{ ********************************************************************}}
+\DoxyCodeLine{12 \textcolor{comment}{}}
+\DoxyCodeLine{13 \textcolor{comment}{ function: libvorbis codec headers}}
+\DoxyCodeLine{14 \textcolor{comment}{}}
+\DoxyCodeLine{15 \textcolor{comment}{ ********************************************************************/}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#ifndef \_vorbis\_codec\_h\_}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define \_vorbis\_codec\_h\_}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{21 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* \_\_cplusplus */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include <ogg/ogg.h>}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }vorbis\_info\{}
+\DoxyCodeLine{28   \textcolor{keywordtype}{int} version;}
+\DoxyCodeLine{29   \textcolor{keywordtype}{int} channels;}
+\DoxyCodeLine{30   \textcolor{keywordtype}{long} rate;}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32   \textcolor{comment}{/* The below bitrate declarations are *hints*.}}
+\DoxyCodeLine{33 \textcolor{comment}{     Combinations of the three values carry the following implications:}}
+\DoxyCodeLine{34 \textcolor{comment}{}}
+\DoxyCodeLine{35 \textcolor{comment}{     all three set to the same value:}}
+\DoxyCodeLine{36 \textcolor{comment}{       implies a fixed rate bitstream}}
+\DoxyCodeLine{37 \textcolor{comment}{     only nominal set:}}
+\DoxyCodeLine{38 \textcolor{comment}{       implies a VBR stream that averages the nominal bitrate.  No hard}}
+\DoxyCodeLine{39 \textcolor{comment}{       upper/lower limit}}
+\DoxyCodeLine{40 \textcolor{comment}{     upper and or lower set:}}
+\DoxyCodeLine{41 \textcolor{comment}{       implies a VBR bitstream that obeys the bitrate limits. nominal}}
+\DoxyCodeLine{42 \textcolor{comment}{       may also be set to give a nominal rate.}}
+\DoxyCodeLine{43 \textcolor{comment}{     none set:}}
+\DoxyCodeLine{44 \textcolor{comment}{       the coder does not care to speculate.}}
+\DoxyCodeLine{45 \textcolor{comment}{  */}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47   \textcolor{keywordtype}{long} bitrate\_upper;}
+\DoxyCodeLine{48   \textcolor{keywordtype}{long} bitrate\_nominal;}
+\DoxyCodeLine{49   \textcolor{keywordtype}{long} bitrate\_lower;}
+\DoxyCodeLine{50   \textcolor{keywordtype}{long} bitrate\_window;}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52   \textcolor{keywordtype}{void} *codec\_setup;}
+\DoxyCodeLine{53 \} vorbis\_info;}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{comment}{/* vorbis\_dsp\_state buffers the current vorbis audio}}
+\DoxyCodeLine{56 \textcolor{comment}{   analysis/synthesis state.  The DSP state belongs to a specific}}
+\DoxyCodeLine{57 \textcolor{comment}{   logical bitstream ****************************************************/}}
+\DoxyCodeLine{58 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }vorbis\_dsp\_state\{}
+\DoxyCodeLine{59   \textcolor{keywordtype}{int} analysisp;}
+\DoxyCodeLine{60   vorbis\_info *vi;}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62   \textcolor{keywordtype}{float} **pcm;}
+\DoxyCodeLine{63   \textcolor{keywordtype}{float} **pcmret;}
+\DoxyCodeLine{64   \textcolor{keywordtype}{int}      pcm\_storage;}
+\DoxyCodeLine{65   \textcolor{keywordtype}{int}      pcm\_current;}
+\DoxyCodeLine{66   \textcolor{keywordtype}{int}      pcm\_returned;}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68   \textcolor{keywordtype}{int}  preextrapolate;}
+\DoxyCodeLine{69   \textcolor{keywordtype}{int}  eofflag;}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71   \textcolor{keywordtype}{long} lW;}
+\DoxyCodeLine{72   \textcolor{keywordtype}{long} W;}
+\DoxyCodeLine{73   \textcolor{keywordtype}{long} nW;}
+\DoxyCodeLine{74   \textcolor{keywordtype}{long} centerW;}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76   ogg\_int64\_t granulepos;}
+\DoxyCodeLine{77   ogg\_int64\_t sequence;}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79   ogg\_int64\_t glue\_bits;}
+\DoxyCodeLine{80   ogg\_int64\_t time\_bits;}
+\DoxyCodeLine{81   ogg\_int64\_t floor\_bits;}
+\DoxyCodeLine{82   ogg\_int64\_t res\_bits;}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84   \textcolor{keywordtype}{void}       *backend\_state;}
+\DoxyCodeLine{85 \} vorbis\_dsp\_state;}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }vorbis\_block\{}
+\DoxyCodeLine{88   \textcolor{comment}{/* necessary stream state for linking to the framing abstraction */}}
+\DoxyCodeLine{89   \textcolor{keywordtype}{float}  **pcm;       \textcolor{comment}{/* this is a pointer into local storage */}}
+\DoxyCodeLine{90   oggpack\_buffer opb;}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92   \textcolor{keywordtype}{long}  lW;}
+\DoxyCodeLine{93   \textcolor{keywordtype}{long}  W;}
+\DoxyCodeLine{94   \textcolor{keywordtype}{long}  nW;}
+\DoxyCodeLine{95   \textcolor{keywordtype}{int}   pcmend;}
+\DoxyCodeLine{96   \textcolor{keywordtype}{int}   mode;}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98   \textcolor{keywordtype}{int}         eofflag;}
+\DoxyCodeLine{99   ogg\_int64\_t granulepos;}
+\DoxyCodeLine{100   ogg\_int64\_t sequence;}
+\DoxyCodeLine{101   vorbis\_dsp\_state *vd; \textcolor{comment}{/* For read-\/only access of configuration */}}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103   \textcolor{comment}{/* local storage to avoid remallocing; it's up to the mapping to}}
+\DoxyCodeLine{104 \textcolor{comment}{     structure it */}}
+\DoxyCodeLine{105   \textcolor{keywordtype}{void}               *localstore;}
+\DoxyCodeLine{106   \textcolor{keywordtype}{long}                localtop;}
+\DoxyCodeLine{107   \textcolor{keywordtype}{long}                localalloc;}
+\DoxyCodeLine{108   \textcolor{keywordtype}{long}                totaluse;}
+\DoxyCodeLine{109   \textcolor{keyword}{struct }alloc\_chain *reap;}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111   \textcolor{comment}{/* bitmetrics for the frame */}}
+\DoxyCodeLine{112   \textcolor{keywordtype}{long} glue\_bits;}
+\DoxyCodeLine{113   \textcolor{keywordtype}{long} time\_bits;}
+\DoxyCodeLine{114   \textcolor{keywordtype}{long} floor\_bits;}
+\DoxyCodeLine{115   \textcolor{keywordtype}{long} res\_bits;}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117   \textcolor{keywordtype}{void} *\textcolor{keyword}{internal};}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119 \} vorbis\_block;}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121 \textcolor{comment}{/* vorbis\_block is a single block of data to be processed as part of}}
+\DoxyCodeLine{122 \textcolor{comment}{the analysis/synthesis stream; it belongs to a specific logical}}
+\DoxyCodeLine{123 \textcolor{comment}{bitstream, but is independent from other vorbis\_blocks belonging to}}
+\DoxyCodeLine{124 \textcolor{comment}{that logical bitstream. *************************************************/}}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126 \textcolor{keyword}{struct }alloc\_chain\{}
+\DoxyCodeLine{127   \textcolor{keywordtype}{void} *ptr;}
+\DoxyCodeLine{128   \textcolor{keyword}{struct }alloc\_chain *next;}
+\DoxyCodeLine{129 \};}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131 \textcolor{comment}{/* vorbis\_info contains all the setup information specific to the}}
+\DoxyCodeLine{132 \textcolor{comment}{   specific compression/decompression mode in progress (eg,}}
+\DoxyCodeLine{133 \textcolor{comment}{   psychoacoustic settings, channel setup, options, codebook}}
+\DoxyCodeLine{134 \textcolor{comment}{   etc). vorbis\_info and substructures are in backends.h.}}
+\DoxyCodeLine{135 \textcolor{comment}{*********************************************************************/}}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137 \textcolor{comment}{/* the comments are not part of vorbis\_info so that vorbis\_info can be}}
+\DoxyCodeLine{138 \textcolor{comment}{   static storage */}}
+\DoxyCodeLine{139 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }vorbis\_comment\{}
+\DoxyCodeLine{140   \textcolor{comment}{/* unlimited user comment fields.  libvorbis writes 'libvorbis'}}
+\DoxyCodeLine{141 \textcolor{comment}{     whatever vendor is set to in encode */}}
+\DoxyCodeLine{142   \textcolor{keywordtype}{char} **user\_comments;}
+\DoxyCodeLine{143   \textcolor{keywordtype}{int}   *comment\_lengths;}
+\DoxyCodeLine{144   \textcolor{keywordtype}{int}    comments;}
+\DoxyCodeLine{145   \textcolor{keywordtype}{char}  *vendor;}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147 \} vorbis\_comment;}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150 \textcolor{comment}{/* libvorbis encodes in two abstraction layers; first we perform DSP}}
+\DoxyCodeLine{151 \textcolor{comment}{   and produce a packet (see docs/analysis.txt).  The packet is then}}
+\DoxyCodeLine{152 \textcolor{comment}{   coded into a framed OggSquish bitstream by the second layer (see}}
+\DoxyCodeLine{153 \textcolor{comment}{   docs/framing.txt).  Decode is the reverse process; we sync/frame}}
+\DoxyCodeLine{154 \textcolor{comment}{   the bitstream and extract individual packets, then decode the}}
+\DoxyCodeLine{155 \textcolor{comment}{   packet back into PCM audio.}}
+\DoxyCodeLine{156 \textcolor{comment}{}}
+\DoxyCodeLine{157 \textcolor{comment}{   The extra framing/packetizing is used in streaming formats, such as}}
+\DoxyCodeLine{158 \textcolor{comment}{   files.  Over the net (such as with UDP), the framing and}}
+\DoxyCodeLine{159 \textcolor{comment}{   packetization aren't necessary as they're provided by the transport}}
+\DoxyCodeLine{160 \textcolor{comment}{   and the streaming layer is not used */}}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162 \textcolor{comment}{/* Vorbis PRIMITIVES: general ***************************************/}}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164 \textcolor{keyword}{extern} \textcolor{keywordtype}{void}     vorbis\_info\_init(vorbis\_info *vi);}
+\DoxyCodeLine{165 \textcolor{keyword}{extern} \textcolor{keywordtype}{void}     vorbis\_info\_clear(vorbis\_info *vi);}
+\DoxyCodeLine{166 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_info\_blocksize(vorbis\_info *vi,\textcolor{keywordtype}{int} zo);}
+\DoxyCodeLine{167 \textcolor{keyword}{extern} \textcolor{keywordtype}{void}     vorbis\_comment\_init(vorbis\_comment *vc);}
+\DoxyCodeLine{168 \textcolor{keyword}{extern} \textcolor{keywordtype}{void}     vorbis\_comment\_add(vorbis\_comment *vc, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *comment);}
+\DoxyCodeLine{169 \textcolor{keyword}{extern} \textcolor{keywordtype}{void}     vorbis\_comment\_add\_tag(vorbis\_comment *vc,}
+\DoxyCodeLine{170                                        \textcolor{keyword}{const} \textcolor{keywordtype}{char} *tag, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *contents);}
+\DoxyCodeLine{171 \textcolor{keyword}{extern} \textcolor{keywordtype}{char}    *vorbis\_comment\_query(vorbis\_comment *vc, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *tag, \textcolor{keywordtype}{int} count);}
+\DoxyCodeLine{172 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_comment\_query\_count(vorbis\_comment *vc, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *tag);}
+\DoxyCodeLine{173 \textcolor{keyword}{extern} \textcolor{keywordtype}{void}     vorbis\_comment\_clear(vorbis\_comment *vc);}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_block\_init(vorbis\_dsp\_state *v, vorbis\_block *vb);}
+\DoxyCodeLine{176 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_block\_clear(vorbis\_block *vb);}
+\DoxyCodeLine{177 \textcolor{keyword}{extern} \textcolor{keywordtype}{void}     vorbis\_dsp\_clear(vorbis\_dsp\_state *v);}
+\DoxyCodeLine{178 \textcolor{keyword}{extern} \textcolor{keywordtype}{double}   vorbis\_granule\_time(vorbis\_dsp\_state *v,}
+\DoxyCodeLine{179                                     ogg\_int64\_t granulepos);}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181 \textcolor{keyword}{extern} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *vorbis\_version\_string(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{183 \textcolor{comment}{/* Vorbis PRIMITIVES: analysis/DSP layer ****************************/}}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{185 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_analysis\_init(vorbis\_dsp\_state *v,vorbis\_info *vi);}
+\DoxyCodeLine{186 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_commentheader\_out(vorbis\_comment *vc, ogg\_packet *op);}
+\DoxyCodeLine{187 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_analysis\_headerout(vorbis\_dsp\_state *v,}
+\DoxyCodeLine{188                                           vorbis\_comment *vc,}
+\DoxyCodeLine{189                                           ogg\_packet *op,}
+\DoxyCodeLine{190                                           ogg\_packet *op\_comm,}
+\DoxyCodeLine{191                                           ogg\_packet *op\_code);}
+\DoxyCodeLine{192 \textcolor{keyword}{extern} \textcolor{keywordtype}{float}  **vorbis\_analysis\_buffer(vorbis\_dsp\_state *v,\textcolor{keywordtype}{int} vals);}
+\DoxyCodeLine{193 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_analysis\_wrote(vorbis\_dsp\_state *v,\textcolor{keywordtype}{int} vals);}
+\DoxyCodeLine{194 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_analysis\_blockout(vorbis\_dsp\_state *v,vorbis\_block *vb);}
+\DoxyCodeLine{195 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_analysis(vorbis\_block *vb,ogg\_packet *op);}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_bitrate\_addblock(vorbis\_block *vb);}
+\DoxyCodeLine{198 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_bitrate\_flushpacket(vorbis\_dsp\_state *vd,}
+\DoxyCodeLine{199                                            ogg\_packet *op);}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201 \textcolor{comment}{/* Vorbis PRIMITIVES: synthesis layer *******************************/}}
+\DoxyCodeLine{202 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_synthesis\_idheader(ogg\_packet *op);}
+\DoxyCodeLine{203 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_synthesis\_headerin(vorbis\_info *vi,vorbis\_comment *vc,}
+\DoxyCodeLine{204                                           ogg\_packet *op);}
+\DoxyCodeLine{205 }
+\DoxyCodeLine{206 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_synthesis\_init(vorbis\_dsp\_state *v,vorbis\_info *vi);}
+\DoxyCodeLine{207 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_synthesis\_restart(vorbis\_dsp\_state *v);}
+\DoxyCodeLine{208 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_synthesis(vorbis\_block *vb,ogg\_packet *op);}
+\DoxyCodeLine{209 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_synthesis\_trackonly(vorbis\_block *vb,ogg\_packet *op);}
+\DoxyCodeLine{210 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_synthesis\_blockin(vorbis\_dsp\_state *v,vorbis\_block *vb);}
+\DoxyCodeLine{211 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_synthesis\_pcmout(vorbis\_dsp\_state *v,\textcolor{keywordtype}{float} ***pcm);}
+\DoxyCodeLine{212 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_synthesis\_lapout(vorbis\_dsp\_state *v,\textcolor{keywordtype}{float} ***pcm);}
+\DoxyCodeLine{213 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_synthesis\_read(vorbis\_dsp\_state *v,\textcolor{keywordtype}{int} samples);}
+\DoxyCodeLine{214 \textcolor{keyword}{extern} \textcolor{keywordtype}{long}     vorbis\_packet\_blocksize(vorbis\_info *vi,ogg\_packet *op);}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{216 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_synthesis\_halfrate(vorbis\_info *v,\textcolor{keywordtype}{int} flag);}
+\DoxyCodeLine{217 \textcolor{keyword}{extern} \textcolor{keywordtype}{int}      vorbis\_synthesis\_halfrate\_p(vorbis\_info *v);}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219 \textcolor{comment}{/* Vorbis ERRORS and return codes ***********************************/}}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{221 \textcolor{preprocessor}{\#define OV\_FALSE      -\/1}}
+\DoxyCodeLine{222 \textcolor{preprocessor}{\#define OV\_EOF        -\/2}}
+\DoxyCodeLine{223 \textcolor{preprocessor}{\#define OV\_HOLE       -\/3}}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{225 \textcolor{preprocessor}{\#define OV\_EREAD      -\/128}}
+\DoxyCodeLine{226 \textcolor{preprocessor}{\#define OV\_EFAULT     -\/129}}
+\DoxyCodeLine{227 \textcolor{preprocessor}{\#define OV\_EIMPL      -\/130}}
+\DoxyCodeLine{228 \textcolor{preprocessor}{\#define OV\_EINVAL     -\/131}}
+\DoxyCodeLine{229 \textcolor{preprocessor}{\#define OV\_ENOTVORBIS -\/132}}
+\DoxyCodeLine{230 \textcolor{preprocessor}{\#define OV\_EBADHEADER -\/133}}
+\DoxyCodeLine{231 \textcolor{preprocessor}{\#define OV\_EVERSION   -\/134}}
+\DoxyCodeLine{232 \textcolor{preprocessor}{\#define OV\_ENOTAUDIO  -\/135}}
+\DoxyCodeLine{233 \textcolor{preprocessor}{\#define OV\_EBADPACKET -\/136}}
+\DoxyCodeLine{234 \textcolor{preprocessor}{\#define OV\_EBADLINK   -\/137}}
+\DoxyCodeLine{235 \textcolor{preprocessor}{\#define OV\_ENOSEEK    -\/138}}
+\DoxyCodeLine{236 }
+\DoxyCodeLine{237 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{238 \}}
+\DoxyCodeLine{239 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* \_\_cplusplus */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{241 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{242 }
+
+\end{DoxyCode}

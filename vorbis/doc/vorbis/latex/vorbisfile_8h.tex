@@ -1,0 +1,365 @@
+\doxysection{vorbisfile.\+h File Reference}
+\label{vorbisfile_8h}\index{vorbisfile.h@{vorbisfile.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}codec.\+h\char`\"{}}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ ov\+\_\+callbacks}
+\item 
+struct \textbf{ Ogg\+Vorbis\+\_\+\+File}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \textbf{ NOTOPEN}~0
+\item 
+\#define \textbf{ PARTOPEN}~1
+\item 
+\#define \textbf{ OPENED}~2
+\item 
+\#define \textbf{ STREAMSET}~3
+\item 
+\#define \textbf{ INITSET}~4
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \textbf{ Ogg\+Vorbis\+\_\+\+File} \textbf{ Ogg\+Vorbis\+\_\+\+File}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \textbf{ ov\+\_\+clear} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf)
+\item 
+int \textbf{ ov\+\_\+fopen} (const char $\ast$path, \textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf)
+\item 
+int \textbf{ ov\+\_\+open} (FILE $\ast$f, \textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, const char $\ast$initial, long ibytes)
+\item 
+int \textbf{ ov\+\_\+open\+\_\+callbacks} (void $\ast$datasource, \textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, const char $\ast$initial, long ibytes, \textbf{ ov\+\_\+callbacks} callbacks)
+\item 
+int \textbf{ ov\+\_\+test} (FILE $\ast$f, \textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, const char $\ast$initial, long ibytes)
+\item 
+int \textbf{ ov\+\_\+test\+\_\+callbacks} (void $\ast$datasource, \textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, const char $\ast$initial, long ibytes, \textbf{ ov\+\_\+callbacks} callbacks)
+\item 
+int \textbf{ ov\+\_\+test\+\_\+open} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf)
+\item 
+long \textbf{ ov\+\_\+bitrate} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, int i)
+\item 
+long \textbf{ ov\+\_\+bitrate\+\_\+instant} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf)
+\item 
+long \textbf{ ov\+\_\+streams} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf)
+\item 
+long \textbf{ ov\+\_\+seekable} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf)
+\item 
+long \textbf{ ov\+\_\+serialnumber} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, int i)
+\item 
+ogg\+\_\+int64\+\_\+t \textbf{ ov\+\_\+raw\+\_\+total} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, int i)
+\item 
+ogg\+\_\+int64\+\_\+t \textbf{ ov\+\_\+pcm\+\_\+total} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, int i)
+\item 
+double \textbf{ ov\+\_\+time\+\_\+total} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, int i)
+\item 
+int \textbf{ ov\+\_\+raw\+\_\+seek} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, ogg\+\_\+int64\+\_\+t pos)
+\item 
+int \textbf{ ov\+\_\+pcm\+\_\+seek} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, ogg\+\_\+int64\+\_\+t pos)
+\item 
+int \textbf{ ov\+\_\+pcm\+\_\+seek\+\_\+page} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, ogg\+\_\+int64\+\_\+t pos)
+\item 
+int \textbf{ ov\+\_\+time\+\_\+seek} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, double pos)
+\item 
+int \textbf{ ov\+\_\+time\+\_\+seek\+\_\+page} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, double pos)
+\item 
+int \textbf{ ov\+\_\+raw\+\_\+seek\+\_\+lap} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, ogg\+\_\+int64\+\_\+t pos)
+\item 
+int \textbf{ ov\+\_\+pcm\+\_\+seek\+\_\+lap} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, ogg\+\_\+int64\+\_\+t pos)
+\item 
+int \textbf{ ov\+\_\+pcm\+\_\+seek\+\_\+page\+\_\+lap} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, ogg\+\_\+int64\+\_\+t pos)
+\item 
+int \textbf{ ov\+\_\+time\+\_\+seek\+\_\+lap} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, double pos)
+\item 
+int \textbf{ ov\+\_\+time\+\_\+seek\+\_\+page\+\_\+lap} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, double pos)
+\item 
+ogg\+\_\+int64\+\_\+t \textbf{ ov\+\_\+raw\+\_\+tell} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf)
+\item 
+ogg\+\_\+int64\+\_\+t \textbf{ ov\+\_\+pcm\+\_\+tell} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf)
+\item 
+double \textbf{ ov\+\_\+time\+\_\+tell} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf)
+\item 
+\textbf{ vorbis\+\_\+info} $\ast$ \textbf{ ov\+\_\+info} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, int link)
+\item 
+\textbf{ vorbis\+\_\+comment} $\ast$ \textbf{ ov\+\_\+comment} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, int link)
+\item 
+long \textbf{ ov\+\_\+read\+\_\+float} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, float $\ast$$\ast$$\ast$pcm\+\_\+channels, int samples, int $\ast$bitstream)
+\item 
+long \textbf{ ov\+\_\+read\+\_\+filter} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, char $\ast$buffer, int length, int bigendianp, int word, int sgned, int $\ast$bitstream, void($\ast$filter)(float $\ast$$\ast$pcm, long channels, long samples, void $\ast$filter\+\_\+param), void $\ast$filter\+\_\+param)
+\item 
+long \textbf{ ov\+\_\+read} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, char $\ast$buffer, int length, int bigendianp, int word, int sgned, int $\ast$bitstream)
+\item 
+int \textbf{ ov\+\_\+crosslap} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf1, \textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf2)
+\item 
+int \textbf{ ov\+\_\+halfrate} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf, int flag)
+\item 
+int \textbf{ ov\+\_\+halfrate\+\_\+p} (\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$vf)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\label{vorbisfile_8h_af11115d8a0493b58a416971c7cf7b324}} 
+\index{vorbisfile.h@{vorbisfile.h}!INITSET@{INITSET}}
+\index{INITSET@{INITSET}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{INITSET}
+{\footnotesize\ttfamily \#define INITSET~4}
+
+\mbox{\label{vorbisfile_8h_ad97e3a9c0388046f598f94de29d0d68f}} 
+\index{vorbisfile.h@{vorbisfile.h}!NOTOPEN@{NOTOPEN}}
+\index{NOTOPEN@{NOTOPEN}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{NOTOPEN}
+{\footnotesize\ttfamily \#define NOTOPEN~0}
+
+\mbox{\label{vorbisfile_8h_a0e70dc0c86732dbec5ed78a47da6c2b8}} 
+\index{vorbisfile.h@{vorbisfile.h}!OPENED@{OPENED}}
+\index{OPENED@{OPENED}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{OPENED}
+{\footnotesize\ttfamily \#define OPENED~2}
+
+\mbox{\label{vorbisfile_8h_a51c69eeb6e218f3b8d0bdab9a3932ba8}} 
+\index{vorbisfile.h@{vorbisfile.h}!PARTOPEN@{PARTOPEN}}
+\index{PARTOPEN@{PARTOPEN}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{PARTOPEN}
+{\footnotesize\ttfamily \#define PARTOPEN~1}
+
+\mbox{\label{vorbisfile_8h_a0ac82bfef0dad50267a005c7370e6801}} 
+\index{vorbisfile.h@{vorbisfile.h}!STREAMSET@{STREAMSET}}
+\index{STREAMSET@{STREAMSET}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{STREAMSET}
+{\footnotesize\ttfamily \#define STREAMSET~3}
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\label{vorbisfile_8h_a099d64124db8fe9fcf1507978c1f28fb}} 
+\index{vorbisfile.h@{vorbisfile.h}!OggVorbis\_File@{OggVorbis\_File}}
+\index{OggVorbis\_File@{OggVorbis\_File}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{OggVorbis\_File}
+{\footnotesize\ttfamily typedef struct \textbf{ Ogg\+Vorbis\+\_\+\+File} \textbf{ Ogg\+Vorbis\+\_\+\+File}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\label{vorbisfile_8h_af1456db1cb141046519ee6b4db0fcf3a}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_bitrate@{ov\_bitrate}}
+\index{ov\_bitrate@{ov\_bitrate}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_bitrate()}
+{\footnotesize\ttfamily long ov\+\_\+bitrate (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_abaab72dcf7bd5c2f4c20e39dc4d782d6}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_bitrate\_instant@{ov\_bitrate\_instant}}
+\index{ov\_bitrate\_instant@{ov\_bitrate\_instant}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_bitrate\_instant()}
+{\footnotesize\ttfamily long ov\+\_\+bitrate\+\_\+instant (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a3add994772dbc946a44909559ba3fdef}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_clear@{ov\_clear}}
+\index{ov\_clear@{ov\_clear}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_clear()}
+{\footnotesize\ttfamily int ov\+\_\+clear (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a2f34ac216327154f5da419d398191fdd}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_comment@{ov\_comment}}
+\index{ov\_comment@{ov\_comment}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_comment()}
+{\footnotesize\ttfamily \textbf{ vorbis\+\_\+comment} $\ast$ ov\+\_\+comment (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{int}]{link }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_aebae91900bda92038fb9c14f3f6ec28c}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_crosslap@{ov\_crosslap}}
+\index{ov\_crosslap@{ov\_crosslap}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_crosslap()}
+{\footnotesize\ttfamily int ov\+\_\+crosslap (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf1,  }\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf2 }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a5e3722741916a8ade9f821332b717713}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_fopen@{ov\_fopen}}
+\index{ov\_fopen@{ov\_fopen}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_fopen()}
+{\footnotesize\ttfamily int ov\+\_\+fopen (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path,  }\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_ace67cdf6531919e05b3bb164db45181a}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_halfrate@{ov\_halfrate}}
+\index{ov\_halfrate@{ov\_halfrate}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_halfrate()}
+{\footnotesize\ttfamily int ov\+\_\+halfrate (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{int}]{flag }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_adc4f36cb355bb7ab7a62c2133e315208}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_halfrate\_p@{ov\_halfrate\_p}}
+\index{ov\_halfrate\_p@{ov\_halfrate\_p}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_halfrate\_p()}
+{\footnotesize\ttfamily int ov\+\_\+halfrate\+\_\+p (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a019c468e08ffd5c2386f6704848c6034}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_info@{ov\_info}}
+\index{ov\_info@{ov\_info}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_info()}
+{\footnotesize\ttfamily \textbf{ vorbis\+\_\+info} $\ast$ ov\+\_\+info (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{int}]{link }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_aa02436897d5801847c11a9f27fc913f9}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_open@{ov\_open}}
+\index{ov\_open@{ov\_open}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_open()}
+{\footnotesize\ttfamily int ov\+\_\+open (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{f,  }\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{const char $\ast$}]{initial,  }\item[{long}]{ibytes }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a30edd47cbc52fef162a7c7686af6416e}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_open\_callbacks@{ov\_open\_callbacks}}
+\index{ov\_open\_callbacks@{ov\_open\_callbacks}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_open\_callbacks()}
+{\footnotesize\ttfamily int ov\+\_\+open\+\_\+callbacks (\begin{DoxyParamCaption}\item[{void $\ast$}]{datasource,  }\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{const char $\ast$}]{initial,  }\item[{long}]{ibytes,  }\item[{\textbf{ ov\+\_\+callbacks}}]{callbacks }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a10f51fe54d7334136cca8927602ba277}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_pcm\_seek@{ov\_pcm\_seek}}
+\index{ov\_pcm\_seek@{ov\_pcm\_seek}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_pcm\_seek()}
+{\footnotesize\ttfamily int ov\+\_\+pcm\+\_\+seek (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{ogg\+\_\+int64\+\_\+t}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a88868174d5c99bbfea1ecf27b5987a1a}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_pcm\_seek\_lap@{ov\_pcm\_seek\_lap}}
+\index{ov\_pcm\_seek\_lap@{ov\_pcm\_seek\_lap}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_pcm\_seek\_lap()}
+{\footnotesize\ttfamily int ov\+\_\+pcm\+\_\+seek\+\_\+lap (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{ogg\+\_\+int64\+\_\+t}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a033abf32795dd65412acb65ec9813172}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_pcm\_seek\_page@{ov\_pcm\_seek\_page}}
+\index{ov\_pcm\_seek\_page@{ov\_pcm\_seek\_page}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_pcm\_seek\_page()}
+{\footnotesize\ttfamily int ov\+\_\+pcm\+\_\+seek\+\_\+page (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{ogg\+\_\+int64\+\_\+t}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a991451d1859ba8b998db7e005cb3b87b}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_pcm\_seek\_page\_lap@{ov\_pcm\_seek\_page\_lap}}
+\index{ov\_pcm\_seek\_page\_lap@{ov\_pcm\_seek\_page\_lap}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_pcm\_seek\_page\_lap()}
+{\footnotesize\ttfamily int ov\+\_\+pcm\+\_\+seek\+\_\+page\+\_\+lap (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{ogg\+\_\+int64\+\_\+t}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a8ff88076c7b368ad976df08b7a08e693}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_pcm\_tell@{ov\_pcm\_tell}}
+\index{ov\_pcm\_tell@{ov\_pcm\_tell}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_pcm\_tell()}
+{\footnotesize\ttfamily ogg\+\_\+int64\+\_\+t ov\+\_\+pcm\+\_\+tell (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a87bb18020fd1bb2916187d13d7652663}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_pcm\_total@{ov\_pcm\_total}}
+\index{ov\_pcm\_total@{ov\_pcm\_total}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_pcm\_total()}
+{\footnotesize\ttfamily ogg\+\_\+int64\+\_\+t ov\+\_\+pcm\+\_\+total (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_ac7e8d23aa742cbff39425fa620f56f30}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_raw\_seek@{ov\_raw\_seek}}
+\index{ov\_raw\_seek@{ov\_raw\_seek}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_raw\_seek()}
+{\footnotesize\ttfamily int ov\+\_\+raw\+\_\+seek (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{ogg\+\_\+int64\+\_\+t}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a53777ca05e1557139fa47693471fb531}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_raw\_seek\_lap@{ov\_raw\_seek\_lap}}
+\index{ov\_raw\_seek\_lap@{ov\_raw\_seek\_lap}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_raw\_seek\_lap()}
+{\footnotesize\ttfamily int ov\+\_\+raw\+\_\+seek\+\_\+lap (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{ogg\+\_\+int64\+\_\+t}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_ab9f8fc1f688c012349271253a9dd8c73}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_raw\_tell@{ov\_raw\_tell}}
+\index{ov\_raw\_tell@{ov\_raw\_tell}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_raw\_tell()}
+{\footnotesize\ttfamily ogg\+\_\+int64\+\_\+t ov\+\_\+raw\+\_\+tell (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a052f63d189dd8563022c1c1796b683a5}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_raw\_total@{ov\_raw\_total}}
+\index{ov\_raw\_total@{ov\_raw\_total}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_raw\_total()}
+{\footnotesize\ttfamily ogg\+\_\+int64\+\_\+t ov\+\_\+raw\+\_\+total (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a208c65166b8d9c868167dc9d389fdba8}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_read@{ov\_read}}
+\index{ov\_read@{ov\_read}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_read()}
+{\footnotesize\ttfamily long ov\+\_\+read (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{char $\ast$}]{buffer,  }\item[{int}]{length,  }\item[{int}]{bigendianp,  }\item[{int}]{word,  }\item[{int}]{sgned,  }\item[{int $\ast$}]{bitstream }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a4d30c9fa8b330b75863c76cb4c20ee48}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_read\_filter@{ov\_read\_filter}}
+\index{ov\_read\_filter@{ov\_read\_filter}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_read\_filter()}
+{\footnotesize\ttfamily long ov\+\_\+read\+\_\+filter (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{char $\ast$}]{buffer,  }\item[{int}]{length,  }\item[{int}]{bigendianp,  }\item[{int}]{word,  }\item[{int}]{sgned,  }\item[{int $\ast$}]{bitstream,  }\item[{void($\ast$)(float $\ast$$\ast$pcm, long channels, long samples, void $\ast$filter\+\_\+param)}]{filter,  }\item[{void $\ast$}]{filter\+\_\+param }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a373af2a3d0353dd40e5ce5687859fdbd}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_read\_float@{ov\_read\_float}}
+\index{ov\_read\_float@{ov\_read\_float}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_read\_float()}
+{\footnotesize\ttfamily long ov\+\_\+read\+\_\+float (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{float $\ast$$\ast$$\ast$}]{pcm\+\_\+channels,  }\item[{int}]{samples,  }\item[{int $\ast$}]{bitstream }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a5a62d840710076235d1cbab5318f6399}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_seekable@{ov\_seekable}}
+\index{ov\_seekable@{ov\_seekable}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_seekable()}
+{\footnotesize\ttfamily long ov\+\_\+seekable (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a1f8e5bd99e125408a14c1bc654f92760}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_serialnumber@{ov\_serialnumber}}
+\index{ov\_serialnumber@{ov\_serialnumber}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_serialnumber()}
+{\footnotesize\ttfamily long ov\+\_\+serialnumber (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a6670a0d98e113d00f8501c512eb9154a}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_streams@{ov\_streams}}
+\index{ov\_streams@{ov\_streams}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_streams()}
+{\footnotesize\ttfamily long ov\+\_\+streams (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a453707c7ded56c5d421b01cc733e901e}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_test@{ov\_test}}
+\index{ov\_test@{ov\_test}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_test()}
+{\footnotesize\ttfamily int ov\+\_\+test (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{f,  }\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{const char $\ast$}]{initial,  }\item[{long}]{ibytes }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_acc51c4c9f6cc6ecff5b6a9c1b885752f}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_test\_callbacks@{ov\_test\_callbacks}}
+\index{ov\_test\_callbacks@{ov\_test\_callbacks}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_test\_callbacks()}
+{\footnotesize\ttfamily int ov\+\_\+test\+\_\+callbacks (\begin{DoxyParamCaption}\item[{void $\ast$}]{datasource,  }\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{const char $\ast$}]{initial,  }\item[{long}]{ibytes,  }\item[{\textbf{ ov\+\_\+callbacks}}]{callbacks }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a876a2b5584ef4070e3b6fd4b79d20b49}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_test\_open@{ov\_test\_open}}
+\index{ov\_test\_open@{ov\_test\_open}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_test\_open()}
+{\footnotesize\ttfamily int ov\+\_\+test\+\_\+open (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_acca7a3b0c08acd43a2d70a03591232ec}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_time\_seek@{ov\_time\_seek}}
+\index{ov\_time\_seek@{ov\_time\_seek}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_time\_seek()}
+{\footnotesize\ttfamily int ov\+\_\+time\+\_\+seek (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{double}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_ac6957ebd8b9d2477507eb1c23f904bec}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_time\_seek\_lap@{ov\_time\_seek\_lap}}
+\index{ov\_time\_seek\_lap@{ov\_time\_seek\_lap}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_time\_seek\_lap()}
+{\footnotesize\ttfamily int ov\+\_\+time\+\_\+seek\+\_\+lap (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{double}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a1bf7109c7770b54d73386678d08f600e}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_time\_seek\_page@{ov\_time\_seek\_page}}
+\index{ov\_time\_seek\_page@{ov\_time\_seek\_page}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_time\_seek\_page()}
+{\footnotesize\ttfamily int ov\+\_\+time\+\_\+seek\+\_\+page (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{double}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a48b714260279171536078483bbaee682}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_time\_seek\_page\_lap@{ov\_time\_seek\_page\_lap}}
+\index{ov\_time\_seek\_page\_lap@{ov\_time\_seek\_page\_lap}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_time\_seek\_page\_lap()}
+{\footnotesize\ttfamily int ov\+\_\+time\+\_\+seek\+\_\+page\+\_\+lap (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{double}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a1bfff60419c269f3131a8637534d148f}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_time\_tell@{ov\_time\_tell}}
+\index{ov\_time\_tell@{ov\_time\_tell}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_time\_tell()}
+{\footnotesize\ttfamily double ov\+\_\+time\+\_\+tell (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf }\end{DoxyParamCaption})}
+
+\mbox{\label{vorbisfile_8h_a59a8e5db6c99b6b5b1157001cf854975}} 
+\index{vorbisfile.h@{vorbisfile.h}!ov\_time\_total@{ov\_time\_total}}
+\index{ov\_time\_total@{ov\_time\_total}!vorbisfile.h@{vorbisfile.h}}
+\doxysubsubsection{ov\_time\_total()}
+{\footnotesize\ttfamily double ov\+\_\+time\+\_\+total (\begin{DoxyParamCaption}\item[{\textbf{ Ogg\+Vorbis\+\_\+\+File} $\ast$}]{vf,  }\item[{int}]{i }\end{DoxyParamCaption})}
+

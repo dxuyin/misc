@@ -1,0 +1,185 @@
+\doxysection{vorbis\+\_\+block Struct Reference}
+\label{structvorbis__block}\index{vorbis\_block@{vorbis\_block}}
+
+
+{\ttfamily \#include $<$codec.\+h$>$}
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+float $\ast$$\ast$ \textbf{ pcm}
+\item 
+oggpack\+\_\+buffer \textbf{ opb}
+\item 
+long \textbf{ lW}
+\item 
+long \textbf{ W}
+\item 
+long \textbf{ nW}
+\item 
+int \textbf{ pcmend}
+\item 
+int \textbf{ mode}
+\item 
+int \textbf{ eofflag}
+\item 
+ogg\+\_\+int64\+\_\+t \textbf{ granulepos}
+\item 
+ogg\+\_\+int64\+\_\+t \textbf{ sequence}
+\item 
+\textbf{ vorbis\+\_\+dsp\+\_\+state} $\ast$ \textbf{ vd}
+\item 
+void $\ast$ \textbf{ localstore}
+\item 
+long \textbf{ localtop}
+\item 
+long \textbf{ localalloc}
+\item 
+long \textbf{ totaluse}
+\item 
+struct \textbf{ alloc\+\_\+chain} $\ast$ \textbf{ reap}
+\item 
+long \textbf{ glue\+\_\+bits}
+\item 
+long \textbf{ time\+\_\+bits}
+\item 
+long \textbf{ floor\+\_\+bits}
+\item 
+long \textbf{ res\+\_\+bits}
+\item 
+void $\ast$ \textbf{ internal}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Field Documentation}
+\mbox{\label{structvorbis__block_a7bc1252bc17a2cd1ee2a4154fdd2617b}} 
+\index{vorbis\_block@{vorbis\_block}!eofflag@{eofflag}}
+\index{eofflag@{eofflag}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{eofflag}
+{\footnotesize\ttfamily int vorbis\+\_\+block\+::eofflag}
+
+\mbox{\label{structvorbis__block_ac96102ac7115856ff07be7cebeb6de37}} 
+\index{vorbis\_block@{vorbis\_block}!floor\_bits@{floor\_bits}}
+\index{floor\_bits@{floor\_bits}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{floor\_bits}
+{\footnotesize\ttfamily long vorbis\+\_\+block\+::floor\+\_\+bits}
+
+\mbox{\label{structvorbis__block_ae1456c556d8365c41ec816956759074b}} 
+\index{vorbis\_block@{vorbis\_block}!glue\_bits@{glue\_bits}}
+\index{glue\_bits@{glue\_bits}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{glue\_bits}
+{\footnotesize\ttfamily long vorbis\+\_\+block\+::glue\+\_\+bits}
+
+\mbox{\label{structvorbis__block_a3dc7d5e474ae80ea641df91eba16b490}} 
+\index{vorbis\_block@{vorbis\_block}!granulepos@{granulepos}}
+\index{granulepos@{granulepos}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{granulepos}
+{\footnotesize\ttfamily ogg\+\_\+int64\+\_\+t vorbis\+\_\+block\+::granulepos}
+
+\mbox{\label{structvorbis__block_ab506fee4272b6e8c634516c1cbb1e638}} 
+\index{vorbis\_block@{vorbis\_block}!internal@{internal}}
+\index{internal@{internal}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{internal}
+{\footnotesize\ttfamily void$\ast$ vorbis\+\_\+block\+::internal}
+
+\mbox{\label{structvorbis__block_a0bf878ef26f578abfd5c7974d8a09f7d}} 
+\index{vorbis\_block@{vorbis\_block}!localalloc@{localalloc}}
+\index{localalloc@{localalloc}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{localalloc}
+{\footnotesize\ttfamily long vorbis\+\_\+block\+::localalloc}
+
+\mbox{\label{structvorbis__block_a457093b574de4317ae1b2505a868a5fb}} 
+\index{vorbis\_block@{vorbis\_block}!localstore@{localstore}}
+\index{localstore@{localstore}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{localstore}
+{\footnotesize\ttfamily void$\ast$ vorbis\+\_\+block\+::localstore}
+
+\mbox{\label{structvorbis__block_a5d207139360d9fa6c825ebca553ae984}} 
+\index{vorbis\_block@{vorbis\_block}!localtop@{localtop}}
+\index{localtop@{localtop}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{localtop}
+{\footnotesize\ttfamily long vorbis\+\_\+block\+::localtop}
+
+\mbox{\label{structvorbis__block_a97675088561ed9aa4559e869aafd1f2c}} 
+\index{vorbis\_block@{vorbis\_block}!lW@{lW}}
+\index{lW@{lW}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{lW}
+{\footnotesize\ttfamily long vorbis\+\_\+block\+::lW}
+
+\mbox{\label{structvorbis__block_adab44bb8520c9d5daafee3f1a1bcf538}} 
+\index{vorbis\_block@{vorbis\_block}!mode@{mode}}
+\index{mode@{mode}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{mode}
+{\footnotesize\ttfamily int vorbis\+\_\+block\+::mode}
+
+\mbox{\label{structvorbis__block_a6fa002c8c36ad39c1c015cfa673dda28}} 
+\index{vorbis\_block@{vorbis\_block}!nW@{nW}}
+\index{nW@{nW}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{nW}
+{\footnotesize\ttfamily long vorbis\+\_\+block\+::nW}
+
+\mbox{\label{structvorbis__block_a43f1746974a729fa4e835ef995f9782a}} 
+\index{vorbis\_block@{vorbis\_block}!opb@{opb}}
+\index{opb@{opb}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{opb}
+{\footnotesize\ttfamily oggpack\+\_\+buffer vorbis\+\_\+block\+::opb}
+
+\mbox{\label{structvorbis__block_ac8312d70a6e63afc01d3df8a54ac6508}} 
+\index{vorbis\_block@{vorbis\_block}!pcm@{pcm}}
+\index{pcm@{pcm}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{pcm}
+{\footnotesize\ttfamily float$\ast$$\ast$ vorbis\+\_\+block\+::pcm}
+
+\mbox{\label{structvorbis__block_a946562a7fdb80cabf6ee749bdce1a0ed}} 
+\index{vorbis\_block@{vorbis\_block}!pcmend@{pcmend}}
+\index{pcmend@{pcmend}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{pcmend}
+{\footnotesize\ttfamily int vorbis\+\_\+block\+::pcmend}
+
+\mbox{\label{structvorbis__block_a047afc2ab3e3936d86817ff45c0eecde}} 
+\index{vorbis\_block@{vorbis\_block}!reap@{reap}}
+\index{reap@{reap}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{reap}
+{\footnotesize\ttfamily struct \textbf{ alloc\+\_\+chain}$\ast$ vorbis\+\_\+block\+::reap}
+
+\mbox{\label{structvorbis__block_a3c91d73c477db77f4b85ded0fdcb607c}} 
+\index{vorbis\_block@{vorbis\_block}!res\_bits@{res\_bits}}
+\index{res\_bits@{res\_bits}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{res\_bits}
+{\footnotesize\ttfamily long vorbis\+\_\+block\+::res\+\_\+bits}
+
+\mbox{\label{structvorbis__block_a09e48c70ae79cae2d37a4e0e55f294ef}} 
+\index{vorbis\_block@{vorbis\_block}!sequence@{sequence}}
+\index{sequence@{sequence}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{sequence}
+{\footnotesize\ttfamily ogg\+\_\+int64\+\_\+t vorbis\+\_\+block\+::sequence}
+
+\mbox{\label{structvorbis__block_ab92eba2cf1a653478630617ddad97f88}} 
+\index{vorbis\_block@{vorbis\_block}!time\_bits@{time\_bits}}
+\index{time\_bits@{time\_bits}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{time\_bits}
+{\footnotesize\ttfamily long vorbis\+\_\+block\+::time\+\_\+bits}
+
+\mbox{\label{structvorbis__block_a24008023c086b4a0eb8b72761cfcf338}} 
+\index{vorbis\_block@{vorbis\_block}!totaluse@{totaluse}}
+\index{totaluse@{totaluse}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{totaluse}
+{\footnotesize\ttfamily long vorbis\+\_\+block\+::totaluse}
+
+\mbox{\label{structvorbis__block_adefe79be61ef3631c18cd7b8afae31a2}} 
+\index{vorbis\_block@{vorbis\_block}!vd@{vd}}
+\index{vd@{vd}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{vd}
+{\footnotesize\ttfamily \textbf{ vorbis\+\_\+dsp\+\_\+state}$\ast$ vorbis\+\_\+block\+::vd}
+
+\mbox{\label{structvorbis__block_a1e420440dd6a5a39262c0fe7afa8435a}} 
+\index{vorbis\_block@{vorbis\_block}!W@{W}}
+\index{W@{W}!vorbis\_block@{vorbis\_block}}
+\doxysubsubsection{W}
+{\footnotesize\ttfamily long vorbis\+\_\+block\+::W}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ codec.\+h}\end{DoxyCompactItemize}
